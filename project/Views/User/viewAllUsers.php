@@ -59,7 +59,8 @@
         </tr>
         <?php
             //Populating the table with data
-            foreach($users as $user){
+            $allUsers = $data;
+            foreach($allUsers as $user){
                 echo "<tr>";
                 echo "<td>" . $user['uID'] . "</td>";
                 echo "<td>" . $user['firstName'] . "</td>";

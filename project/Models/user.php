@@ -1,6 +1,6 @@
 <?php
 //Include the connection file
-include_once "../connection.php";
+include_once "connection.php";
 
 //Create user class
 class User{
@@ -64,6 +64,8 @@ class User{
         //Create the sql statement to retrieve all users
         $sql = "SELECT * FROM `users`";
 
+        //TODO: prepare query first
+        
         //Run sql statement
         $result = $conn->query($sql);
 
@@ -135,6 +137,8 @@ class User{
 
         //Create sql statement to update the user
         $sql = "UPDATE * FROM `users` SET firstName=?, lastName=?, telephoneNumber=?, address=?, postalCode=?, username=?, password=? WHERE uID=?";
+
+        $stmt = $conn->prepare($sql);
 
         //Bind parameters to sql stmt
         $stmt->bind_param("sssssss", $this->firstName, $this->lastName, $this->telephoneNumber, $this->address, $this->postalCode, $this->username, $this->password);
