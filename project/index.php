@@ -23,9 +23,6 @@
     include_once "Models/user.php";
     include_once "Controllers/user_controller.php";
 
-
-
-
     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])){
         $username = $_POST['username'];
         $password = $_POST['password'];

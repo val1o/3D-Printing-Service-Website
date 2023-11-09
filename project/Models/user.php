@@ -147,18 +147,45 @@ class User{
         }
     }
 
-    public static function addUser(){
+    public static function addUser($firstName = "", $lastName = "", $telephoneNumber = "", $address = "", $postalCode = "", $username = "", $password = ""){
         //Call global conn
         global $conn;
+
+        //Regex validation patterns
+        $namePattern = "/^[A-Z][a-z]*$/";
+        $phonePattern = "/^\d{3}-\d{3}-\d{4}$/";
+        $postalCodePattern = "/^[A-Z]\d[A-Z]\d[A-Z]\d$/";
+        $passwordPattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
+        
+        // Validate inputs using regular expressions
+        if (!preg_match($namePattern, $firstName)) {
+            return false;
+        }
+
+        if (!preg_match($namePattern, $lastName)){
+            return false;
+        }
+
+        if (!preg_match($phonePattern, $telephoneNumber)) {
+            return false;
+        }
+
+        if (!preg_match($postalCodePattern, $postalCode)) {
+            return false;
+        }
+
+        if (!preg_match($passwordPattern, $password)) {
+            return false;
+        }
 
         //Create sql statement to add a user
         $sql = "INSERT INTO `users` (firstName, lastName, telephoneNumber, address, postalCode, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         //Prepare statement
-        $stmt->prepare($sql);
+        $stmt = $conn->prepare($sql);
 
         //Bind parameters to statement
-        $stmt->bind_param("sssssssi", $_POST['firstName'], $_POST['lastName'], $_POST['telephoneNumber'], $_POST['address'], $_POST['postalCode'], $_POST['username'], $_POST['password']);
+        $stmt->bind_param("sssssss", $_POST['firstName'], $_POST['lastName'], $_POST['telephoneNumber'], $_POST['address'], $_POST['postalCode'], $_POST['username'], $_POST['password']);
 
         //Execute statement
         return $stmt->execute();
@@ -175,6 +202,24 @@ class User{
         $result = $conn->query($sql);
 
         //Check if result exists
+        if($result->num_rows > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function verifyRegistration($firstName, $lastName, $username, $password){
+        //Call global $conn
+        global $conn;
+
+        //Create sql statement to verify if user exists
+        $sql = "SELECT * from `users` WHERE firstName='$firstName' AND lastName='$lastName' AND username='$username' AND password='$password'";
+
+        //Run sql statement
+        $result = $conn->query($sql);
+
+        //Check if the result exists
         if($result->num_rows > 0){
             return true;
         } else {

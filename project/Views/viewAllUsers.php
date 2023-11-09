@@ -4,22 +4,45 @@
 <head>
     <title>View All Users</title>
     <style>
-         table {
+
+        .table-container {
+            margin: 50px 50px 0 50px;
+        }
+        table {
             border-collapse: collapse;
             width: 100%;
+            font-family: Arial, sans-serif;
+            color: #444;
         }
+
         th, td {
-            border: 1px solid black;
-            padding: 8px;
+            border: 1px solid #f2f2f2;
+            padding: 12px;
             text-align: left;
         }
+
         th {
+            background-color: #344966;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
+    <div class="table-container">
     <h2>List of All Users</h2>
 
     <table>
@@ -51,6 +74,7 @@
             }
         ?>
     </table>
+    </div>
 
 
 </body>

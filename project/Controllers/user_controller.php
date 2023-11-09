@@ -1,7 +1,7 @@
 <?php
     //Include ressources
     include_once '../connection.php';
-    include_once "../Models/user.php";
+    include_once '../Models/user.php';
 
     //Check if the action is set in the URL
     if(isset($_GET['action'])){
@@ -16,14 +16,14 @@
                 break;
             
             case 'register':
-                include 'register.php';
+                include '../Views/register.php';
                 if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     $firstName = $_POST['firstName'];
                     $lastName = $_POST['lastName'];
                     $telephoneNumber = $_POST['telephoneNumber'];
                     $address = $_POST['address'];
                     $postalCode = $_POST['postalCode'];
-                    $username = $_POST['firstName'];
+                    $username = $_POST['username'];
                     $password = $_POST['password'];
                     $result = user::addUser($firstName, $lastName, $telephoneNumber, $address, $postalCode, $username, $password);
                     if($result){
@@ -32,7 +32,7 @@
                         echo "Registration error.";
                     }
                 }
-
+                break;
         }
     }
 ?>
