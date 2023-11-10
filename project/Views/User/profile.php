@@ -47,55 +47,53 @@
 <div class="container">
     <h2>Profile Page</h2>
         <?php if(isset($user)) { ?>
-            <form action="index.php?c=User&a=profile" method="POST">
+            <form action="index.php?c=User&a=updateProfile" method="POST">
                 <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" required>
+                <input type="text" name="firstName" value="<?= $user['firstName'] ?>" required>
 
                 <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" required>
+                <input type="text" name="lastName" value="<?= $user['lastName'] ?>" required>
 
                 <label for="telephonenumber">Telephone Number:</label>
-                <input type="tel" id="telephonenumber" name="telephonenumber" required>
+                <input type="tel" name="telephoneNumber" value="<?= $user['telephoneNumber'] ?>" required>
 
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
+                <input type="text" name="address" value="<?= $user['address'] ?>" required>
 
                 <label for="postalcode">Postal Code:</label>
-                <input type="text" id="postalcode" name="postalcode" required>
+                <input type="text" name="postalCode" value="<?= $user['postalCode'] ?>" required>
 
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" name="username" value="<?= $user['username'] ?>" required>
 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" name="password" value="<?= $user['password'] ?>" required>
 
-                <button type="submit">Update</button>
+                <button type="submit" name="update">Update</button>
             </form>
         <?php } else { ?>
             <p>Please Login before accessing your profile.</p>
-            <form action="index.php?c=User&a=profile" method="POST">
+            <form action="index.php?c=User&a=updateProfile" method="POST">
                 <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" disabled>
+                <input type="text" name="firstName" disabled>
 
                 <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" disabled>
+                <input type="text" name="lastName" disabled>
 
                 <label for="telephonenumber">Telephone Number:</label>
-                <input type="tel" id="telephonenumber" name="telephonenumber" disabled>
+                <input type="tel" name="telephoneNumber" disabled>
 
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" disabled>
+                <input type="text" name="address" disabled>
 
                 <label for="postalcode">Postal Code:</label>
-                <input type="text" id="postalcode" name="postalcode" disabled>
+                <input type="text" name="postalCode" disabled>
 
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" disabled>
+                <input type="text" name="username" disabled>
 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" disabled>
-
-                <button type="submit">Update</button>
+                <input type="password" name="password" disabled>
             </form>
         <?php } ?>
 </div>

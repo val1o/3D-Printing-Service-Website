@@ -25,12 +25,13 @@
                 case "login":
                     //Check if the username and password are set
                     if (isset($_POST['username']) && isset($_POST['password'])){
-                        //Create user and assign info to variables
+                        
+                        //Assign info to variables
                         $username = $_POST['username'];
                         $password = $_POST['password'];
-                        $user = new User();
 
-                        //Check if user info is correct
+                        //Create user and check if info is correct
+                        $user = new User();
                         if($user->checkLoginUser($username, $password)){
                             
                             //Assign user and check if admin
@@ -58,7 +59,7 @@
                     //Check if the info is set
                     if (isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['telephoneNumber']) && isset($_POST['address']) && isset($_POST['postalCode']) && isset($_POST['username']) && isset($_POST['password'])){
                         
-                        //Create user and assign info to variables
+                        //Assign info to variables
                         $firstName = $_POST['firstName'];
                         $lastName = $_POST['lastName'];
                         $telephoneNumber = $_POST['telephoneNumber'];
@@ -66,9 +67,9 @@
                         $postalCode = $_POST['postalCode'];
                         $username = $_POST['username'];
                         $password = $_POST['password'];
-                        $user = new User();
 
-                        //Check if username already exists
+                        //Create new user and check if username already exists
+                        $user = new User();
                         if(!$user->getUserByUsername($username)){
                             
                             //Populate variable
@@ -107,6 +108,41 @@
                         $this->render("User", "profile");
                     }
                     break;
+
+                case "updateProfile":
+                    //Check if updateProfile is set
+                    if(isset($_POST['update'])) {
+                        
+                        //Assign info to variables
+                        $firstName = $_POST['firstName'];
+                        $lastName = $_POST['lastName'];
+                        $telephoneNumber = $_POST['telephoneNumber'];
+                        $address = $_POST['address'];
+                        $postalCode = $_POST['postalCode'];
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+
+                        //Create new user and update the info
+                        $user = new User();
+                        $user->updateUser($_SESSION['uID']);
+                        
+                        //Re-populate user
+                        $user = $user->getUserByuID($_SESSION['uID']);
+
+                        //Re-render the profile with updated values
+                        $this->render("User", "profile", ['user' => $user]);
+                        echo "User updated successfully!";
+
+                    } else {
+                        echo "pls do not probe the website";
+                    }
+                    break;
+
+                case "logout":
+                    //Destroy and unset session
+                    session_unset();
+                    session_destroy();
+                    $this->render("Home", "home");
             }
         }
     }

@@ -130,17 +130,17 @@ class User{
         }
     }
 
-    public function updateUser(){
+    public function updateUser($uID){
         //Call global conn
         global $conn;
 
         //Create sql statement to update the user
-        $sql = "UPDATE * FROM `users` SET firstName=?, lastName=?, telephoneNumber=?, address=?, postalCode=?, username=?, password=? WHERE uID=?";
+        $sql = "UPDATE `users` SET firstName=?, lastName=?, telephoneNumber=?, address=?, postalCode=?, username=?, password=? WHERE uID=$uID";
 
         $stmt = $conn->prepare($sql);
 
         //Bind parameters to sql stmt
-        $stmt->bind_param("sssssss", $this->firstName, $this->lastName, $this->telephoneNumber, $this->address, $this->postalCode, $this->username, $this->password);
+        $stmt->bind_param("sssssss", $_POST['firstName'], $_POST['lastName'], $_POST['telephoneNumber'], $_POST['address'], $_POST['postalCode'], $_POST['username'], $_POST['password']);
 
         //Execute stmt
         if($stmt->execute()){
