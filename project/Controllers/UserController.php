@@ -23,35 +23,47 @@
                     break;
                     
                 case "login":
-                    //Check if the username and password are set
-                    if (isset($_POST['username']) && isset($_POST['password'])){
-                        
-                        //Assign info to variables
-                        $username = $_POST['username'];
-                        $password = $_POST['password'];
+                    //Check if user is already logged in
+                    if(!isset($_SESSION['uID'])) {
 
-                        //Create user and check if info is correct
-                        $user = new User();
-                        if($user->checkLoginUser($username, $password)){
+                        //Check if the username and password are set
+                        if (isset($_POST['username']) && isset($_POST['password'])){
                             
-                            //Assign user and check if admin
-                            $user = $user->getUserByUsername($username);
-                            $_SESSION['uID'] = $user['uID'];
+                            //Assign info to variables
+                            $username = $_POST['username'];
+                            $password = $_POST['password'];
 
-                            if($user['isAdmin']) {
-                                $user = new User();
-                                $allUsers = $user->retrieveAllUsers();
-                                $this->render("User", "viewAllUsers", $allUsers);
+                            //Create user and check if info is correct
+                            $user = new User();
+                            if($user->checkLoginUser($username, $password)){
+                                
+                                //Assign user and check if admin
+                                $user = $user->getUserByUsername($username);
+                                $_SESSION['uID'] = $user['uID'];
+
+                                if($user['isAdmin']) {
+                                    $user = new User();
+                                    $allUsers = $user->retrieveAllUsers();
+                                    $this->render("User", "viewAllUsers", $allUsers);
+                                } else {
+                                    $this->render("Home", "home");
+                                }
                             } else {
-                                $this->render("Home", "home");
+                                echo '<script language="javascript">';
+                                echo 'alert("Please enter a valid username and password.")';
+                                echo '</script>';
                             }
                         } else {
-                            echo '<script language="javascript">';
-                            echo 'alert("Please enter a valid username and password.")';
-                            echo '</script>';
+                            $this->render("User", "login");
                         }
+
                     } else {
-                        $this->render("User", "login");
+                        
+                        //Create new user object and populate
+                        $user = new User();
+                        $user = $user->getUserByuID($_SESSION['uID']);
+
+                        $this->render("User", "login", ['user' => $user]);
                     }
                     break;
                 

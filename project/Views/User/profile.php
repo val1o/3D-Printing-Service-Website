@@ -89,28 +89,6 @@
 
         <?php } else { ?>
             <p>Please Login before accessing your profile.</p>
-            <form action="index.php?c=User&a=updateProfile" method="POST">
-                <label for="firstname">First Name:</label>
-                <input type="text" name="firstName" disabled>
-
-                <label for="lastname">Last Name:</label>
-                <input type="text" name="lastName" disabled>
-
-                <label for="telephonenumber">Telephone Number:</label>
-                <input type="tel" name="telephoneNumber" disabled>
-
-                <label for="address">Address:</label>
-                <input type="text" name="address" disabled>
-
-                <label for="postalcode">Postal Code:</label>
-                <input type="text" name="postalCode" disabled>
-
-                <label for="username">Username:</label>
-                <input type="text" name="username" disabled>
-
-                <label for="password">Password:</label>
-                <input type="password" name="password" disabled>
-            </form>
         <?php } ?>
 </div>
 
