@@ -5,40 +5,49 @@
 
     class UserController {
 
-        public function render($view, $data = []) {
+        public function render($viewGroup, $view, $data = []) {
             extract($data);
 
-            include "Views/User/$view.php";
+            include "Views/$viewGroup/$view.php";
         }
 
         public function route() {
 
-            $action = (isset($_GET['action'])) ? $_GET['action'] : "viewAllUsers";
-		    $id = (isset($_GET['id'])) ? intval($_GET['id']) : -1;
-
+            $action = (isset($_GET['a'])) ? $_GET['a'] : "viewAllUsers";
             
             switch ($action) {
                 case "viewAllUsers":
                     $allUsers = User::retrieveAllUsers();
-                    $this->render("viewAllUsers", $allUsers);
+                    $this->render("User", "viewAllUsers", $allUsers);
                     break;
+                    
                 case "login":
                     //Check if the username and password are set
                     if (isset($_POST['username']) && isset($_POST['password'])){
-                        //Put them in vars if yes
+                        //Create user and add info
                         $username = $_POST['username'];
                         $password = $_POST['password'];
+                        $user = new Models/User.php();
 
-                        //Check if username and password are valid
-                        if(User::checkLoginUser($username, $password)){
-                            $this->render("login");    
+                        //Check if user exists
+                        if($user->getByUsername($username)){
+                            
+                            //Assign user and check if admin
+                            $user = $user->getByUsername($username);
+                            $_SESSION['uID'] = $user->uID;
+
+                            if($user->isAdmin) {
+                                $this->render("User", "viewAllUsers");
+                            } else {
+                                $this->render("Home", "home");
+                            }
                         } else {
                             echo '<script language="javascript">';
                             echo 'alert("Please enter a valid username and password.")';
                             echo '</script>';
                         }
                     } else {
-                        $this->render("login");
+                        $this->render("User", "login");
                     }
             }
                     
