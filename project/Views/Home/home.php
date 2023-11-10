@@ -23,10 +23,10 @@
     <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
     </label>
-    <label class="logo">3D Printing</label>
+    <label class="logo">3D Printing Montréal</label>
     <ul>
       <li><a class="active" href="#">Home</a></li>
-      <li><a href="login.php">Login</a></li>
+      <li><a href="Views/User/login.php">Login</a></li>
       <li><a href="register.php">Register</a></li>
       <li><a href="#">Feedback</a></li>
       <li><a href="#">Services</a></li>

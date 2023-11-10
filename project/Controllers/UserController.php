@@ -22,19 +22,25 @@
                     $allUsers = User::retrieveAllUsers();
                     $this->render("viewAllUsers", $allUsers);
                     break;
+                case "login":
+                    //Check if the username and password are set
+                    if (isset($_POST['username']) && isset($_POST['password'])){
+                        //Put them in vars if yes
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+
+                        //Check if username and password are valid
+                        if(User::checkLoginUser($username, $password)){
+                            $this->render("login");    
+                        } else {
+                            echo '<script language="javascript">';
+                            echo 'alert("Please enter a valid username and password.")';
+                            echo '</script>';
+                        }
+                    } else {
+                        $this->render("login");
+                    }
             }
-
-            // //Check if the action is set in the URL
-            // if(isset($_GET['action'])){
-            //     //If yes put it in a var
-            //     $action = $_GET['action'];
-
-            //     //Switch $action
-            //     switch($action){
-            //         case 'viewAllUsers':
-            //             $users = user::retrieveAllUsers();
-            //             include '../Views/viewAllUsers.php';
-            //             break;
                     
             //         case 'register':
             //             include '../Views/register.php';

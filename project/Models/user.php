@@ -206,11 +206,7 @@ class User{
         $result = $conn->query($sql);
 
         //Check if result exists
-        if($result->num_rows > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return ($result->num_rows > 0) ? true : false;
     }
 
     public static function verifyRegistration($firstName, $lastName, $username, $password){
