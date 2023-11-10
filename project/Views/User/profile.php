@@ -44,6 +44,10 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        button .delete{
+            background-color: #4caf50;
+        }
     </style>
 </head>
 <body>
@@ -77,9 +81,9 @@
 
             </form>
 
-            <form action="index.php?c=User&a=deleteProfile">
+            <form action="index.php?c=User&a=deleteProfile" method="POST">
                 <br>
-                <button type="submit" name="delete">Delete</button>
+                <button type="submit" name="delete" class="delete">Delete</button>
 
             </form>
 
