@@ -194,7 +194,6 @@ class User{
         return $stmt->execute();
     }
 
-
     public static function getUserByUsername($username){
         //Call global $conn
         global $conn;
@@ -210,16 +209,8 @@ class User{
             die("Error: " . $conn->error);
         }
 
-        //Create empty array to hold the user
-        $user = array();
-
-        //Populate array with fetched data
-        while($row = $result->fetch_assoc()){
-            $user[] = $row;
-        }
-
         //Return the array
-        return $user;
+        return $result->fetch_assoc();
     }
 
 }
