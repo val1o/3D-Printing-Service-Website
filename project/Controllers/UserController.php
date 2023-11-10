@@ -101,10 +101,10 @@
                         $user = $user->getUserByuID($uID);
                         
                         //Render with user data
-                        $this->render("User", "profile", $user);
+                        $this->render("User", "profile", ['user' => $user]);
 
                     } else {
-                        $this->render("User", "profile", $disabled=false);
+                        $this->render("User", "profile");
                     }
                     break;
             }
