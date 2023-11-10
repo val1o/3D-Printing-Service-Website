@@ -14,6 +14,33 @@
     margin: 0;
   }
 
+  .home-section {
+    flex-grow: 1;
+    background: url('Views/Home/your-image.jpg') center/cover no-repeat; /* Set image as background */
+    text-align: center;
+}
+
+  .home-section img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+  }
+
+  .text-over-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: burlywood; /* Set text color to white or a suitable contrast */
+    padding: 20px;
+}
+
+  h2 {
+    font-size: 64px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
   #textOverlay {
     position: absolute;
     top: 50%;

@@ -38,6 +38,11 @@
       <li><a href="index.php?c=User&a=logout">Logout</a></li>
     </ul>
     </nav>
+
+
+    <div class="home-section">
+            <img src="Views/Home/r028_spc_k005_pict2_3dprint.jpg" alt="Your Image" />
+
   </div>
 
   <script>
