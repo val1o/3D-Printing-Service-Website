@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $controller = (isset($_GET['c'])) ? $_GET['c'] : "home";
 
 $controllerClassName = ucfirst($controller) . "Controller";

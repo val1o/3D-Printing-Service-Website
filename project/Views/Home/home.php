@@ -26,8 +26,9 @@
     <label class="logo">3D Printing Montréal</label>
     <ul>
       <li><a class="active" href="#">Home</a></li>
-      <li><a href="Views/User/login.php">Login</a></li>
-      <li><a href="Views/User/register.php">Register</a></li>
+      <li><a href="index.php?c=User&a=login">Login</a></li>
+      <li><a href="index.php?c=User&a=register">Register</a></li>
+      <li><a href="index.php?c=User&a=profile">Profile</a></li>
       <li><a href="#">Feedback</a></li>
       <li><a href="#">Services</a></li>
     </ul>

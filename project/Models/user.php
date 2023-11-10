@@ -237,7 +237,7 @@ class User{
         global $conn;
 
         //Create sql statement to get user by username
-        $sql = "SELECT * FROM `users` WHERE username='$username'";
+        $sql = "SELECT * FROM `users` WHERE uId='$uID'";
 
         //Run sql statement
         $result = $conn->query($sql);

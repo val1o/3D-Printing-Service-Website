@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Home/style.css">
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
     <div class="login-container">
-        <form action="../../index.php?c=User&a=login" method="POST">
+        <form action="index.php?c=User&a=login" method="POST">
             <h2>Login</h2>
             <?php if (isset($error)) {
                 // echo '<p style="color: red;">' . $error . '</p>';

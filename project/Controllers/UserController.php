@@ -88,28 +88,26 @@
                         $this->render("User", "register");
                     }
                     break;
+
+                case "profile":
+                    //Check if session is set
+                    if(isset($_SESSION['uID'])) {
+                        
+                        //Assign info to variables
+                        $uID = $_SESSION['uID'];
+
+                        //Creating and populating new user
+                        $user = new User();
+                        $user = $user->getUserByuID($uID);
+                        
+                        //Render with user data
+                        $this->render("User", "profile", $user);
+
+                    } else {
+                        $this->render("User", "profile", $disabled=false);
+                    }
+                    break;
             }
-                    
-            //         case 'register':
-            //             include '../Views/register.php';
-            //             if($_SERVER['REQUEST_METHOD'] === 'POST'){
-                            // $firstName = $_POST['firstName'];
-                            // $lastName = $_POST['lastName'];
-                            // $telephoneNumber = $_POST['telephoneNumber'];
-                            // $address = $_POST['address'];
-                            // $postalCode = $_POST['postalCode'];
-                            // $username = $_POST['username'];
-                            // $password = $_POST['password'];
-            //                 $result = user::addUser($firstName, $lastName, $telephoneNumber, $address, $postalCode, $username, $password);
-                            // if($result){
-                            //     echo "User registered successfully.";
-                            // } else {
-                            //     echo "Registration error.";
-                            // }
-            //             }
-            //             break;
-            //     }
-            // }
         }
     }
 ?>

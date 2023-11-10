@@ -9,7 +9,7 @@
 <body>
     <h2>Add User</h2>    
 
-    <form method="POST" action="../../index.php?c=User&a=register">
+    <form method="POST" action="index.php?c=User&a=register">
 
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName"><br>
