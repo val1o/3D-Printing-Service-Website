@@ -70,7 +70,15 @@
                 <input type="password" name="password" value="<?= $user['password'] ?>" required>
 
                 <button type="submit" name="update">Update</button>
+
             </form>
+
+            <form action="index.php?c=User&a=deleteProfile">
+                <br>
+                <button type="submit" name="delete">Delete</button>
+
+            </form>
+
         <?php } else { ?>
             <p>Please Login before accessing your profile.</p>
             <form action="index.php?c=User&a=updateProfile" method="POST">

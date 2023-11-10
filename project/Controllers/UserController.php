@@ -138,6 +138,23 @@
                     }
                     break;
 
+                case "deleteProfile":
+
+                    //Check if delete is set
+                    if(isset($_POST['delete'])){
+                        
+                        //Create new user and delete the specified user
+                        $user = new User();
+                        $user->deleteUser($_SESSION['uID']);
+                        
+                        //Render home page after deletion
+                        $this->render("Home", "home");
+                        echo "User deleted successfully";
+                    } else {
+                        echo "pls do not probe the website";
+                    }
+                    break;
+
                 case "logout":
                     //Destroy and unset session
                     session_unset();

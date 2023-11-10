@@ -86,27 +86,22 @@ class User{
         return $users;
     }
 
-    public function deleteUser(){
+    public function deleteUser($uID){
         //Call global conn
         global $conn;
 
         //Create sql statement to delete the user
-        $sql = "DELETE * FROM `users` WHERE uID=?";
+        $sql = "DELETE FROM `users` WHERE uID=?";
 
         //Prepare the statement
         $stmt = $conn->prepare($sql);
 
-        //Check if preparation was successful
-        if(!$stmt){
-            return "Prepare error: " . $conn->error;
-        }
-
         //Bind parameters to the statement
-        $stmt->bind_param("i", $this->uID);
+        $stmt->bind_param("i", $uID);
 
         //Execute the statement
         if($stmt->execute()){
-            return "User with ID: " . $this->uID . " deleted successfully";
+            return "User with ID: " . $uID . " deleted successfully";
         } else {
             return "Deletion error: " . $stmt->error;
         }
@@ -144,7 +139,7 @@ class User{
 
         //Execute stmt
         if($stmt->execute()){
-            return "User with ID: " . $this->uID . "updated successfully";
+            return "User with ID: " . $uID . "updated successfully";
         } else {
             return "Update error: " . $stmt->error;
         }
