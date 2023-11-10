@@ -27,16 +27,16 @@
                         //Create user and add info
                         $username = $_POST['username'];
                         $password = $_POST['password'];
-                        $user = new Models/User.php();
+                        $user = new User();
 
                         //Check if user exists
-                        if($user->getByUsername($username)){
+                        if($user->getUserByUsername($username)){
                             
                             //Assign user and check if admin
-                            $user = $user->getByUsername($username);
-                            $_SESSION['uID'] = $user->uID;
+                            $user = $user->getUserByUsername($username);
+                            $_SESSION['uID'] = $user['uID'];
 
-                            if($user->isAdmin) {
+                            if($user['isAdmin']) {
                                 $this->render("User", "viewAllUsers");
                             } else {
                                 $this->render("Home", "home");

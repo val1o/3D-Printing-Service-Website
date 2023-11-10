@@ -11,7 +11,7 @@
 
 <body>
     <div class="login-container">
-        <form action="../../Controllers/UserController?a=login" method="POST">
+        <form action="../../index.php?c=User&a=login" method="POST">
             <h2>Login</h2>
             <?php if (isset($error)) {
                 // echo '<p style="color: red;">' . $error . '</p>';
