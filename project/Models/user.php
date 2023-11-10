@@ -213,9 +213,26 @@ class User{
         return $result->fetch_assoc();
     }
 
-
-
     public static function getUserByUsername($username){
+        //Call global $conn
+        global $conn;
+
+        //Create sql statement to get user by username
+        $sql = "SELECT * FROM `users` WHERE username='$username'";
+
+        //Run sql statement
+        $result = $conn->query($sql);
+
+        //if error...
+        if(!$result){
+            die("Error: " . $conn->error);
+        }
+
+        //Return the array
+        return $result->fetch_assoc();
+    }
+
+    public static function getUserByuID($uID){
         //Call global $conn
         global $conn;
 
