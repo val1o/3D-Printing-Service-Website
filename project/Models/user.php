@@ -24,7 +24,7 @@ class User{
         $this->uID = $uID;
 
         //If the uID is invalid...
-        if(uID < 0){
+        if($uID < 0){
             $this->firstName = "";
             $this->lastName = "";
             $this->telephoneNumber = "";
