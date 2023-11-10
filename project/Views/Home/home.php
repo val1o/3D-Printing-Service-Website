@@ -27,7 +27,7 @@
     <ul>
       <li><a class="active" href="#">Home</a></li>
       <li><a href="Views/User/login.php">Login</a></li>
-      <li><a href="register.php">Register</a></li>
+      <li><a href="Views/User/register.php">Register</a></li>
       <li><a href="#">Feedback</a></li>
       <li><a href="#">Services</a></li>
     </ul>
