@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Views/Home/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
     <title>Document</title>
     <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -23,15 +27,15 @@
     <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
     </label>
-    <label class="logo">3D Printing Montréal</label>
+    <label class="logo">3D Printing Montreal</label>
     <ul>
       <li><a class="active" href="#">Home</a></li>
-      <li><a href="index.php?c=User&a=login">Login</a></li>
-      <li><a href="index.php?c=User&a=register">Register</a></li>
+      <li><a href="#">Service</a></li>
+      <li><a href="#">Templates</a></li>
       <li><a href="index.php?c=User&a=profile">Profile</a></li>
+      <li><a href="index.php?c=User&a=register">Register</a></li>
+      <li><a href="index.php?c=User&a=login">Login</a></li>
       <li><a href="index.php?c=User&a=logout">Logout</a></li>
-      <li><a href="#">Feedback</a></li>
-      <li><a href="#">Services</a></li>
     </ul>
     </nav>
   </div>

@@ -10,6 +10,10 @@
     z-index: 9999;
   }
 
+  body {
+    margin: 0;
+  }
+
   #textOverlay {
     position: absolute;
     top: 50%;
@@ -19,6 +23,7 @@
     font-size: 108px;
     text-align: center;
     z-index: 10000;
+    font-family: 'Montserrat', sans-serif;
 }
   
   #overlayImage {
@@ -51,11 +56,14 @@
     line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .revealContent nav ul {
     float: right;
     margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .revealContent nav ul li {
@@ -70,6 +78,8 @@
     padding: 7px 13px;
     border-radius: 3px;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
   }
   
   .revealContent a.active,
