@@ -194,39 +194,6 @@ class User{
         return $stmt->execute();
     }
 
-    public static function checkLoginUser($username, $password){
-        //Call global conn
-        global $conn;
-
-        //Create sql statement to verify if user exists
-        $sql = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
-
-        //Run sql statement
-        $result = $conn->query($sql);
-
-        //Check if result exists
-        return ($result->num_rows > 0) ? true : false;
-    }
-
-
-
-    public static function isUsernameTaken($username){
-        //Call global $conn
-        global $conn;
-
-        //Create sql statement to verify if user exists
-        $sql = "SELECT * FROM `users` WHERE username='$username'";
-
-        //Run sql statement
-        $result = $conn->query($sql);
-
-        //Check if the result exists
-        if($result->num_rows > 0){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public static function getUserByUsername($username){
         //Call global $conn
