@@ -70,7 +70,8 @@
                 echo "<td>" . $user['postalCode'] . "</td>";
                 echo "<td>" . $user['username'] . "</td>";
                 echo "<td>" . $user['password'] . "</td>";
-                echo "<td>" . $user['isAdmin'] . "</td>";
+                $isAdmin = ($user['isAdmin']) ? "true" : "false";
+                echo "<td>" . $isAdmin . "</td>";
                 echo "</tr>";
             }
         ?>
