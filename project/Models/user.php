@@ -86,7 +86,6 @@ class User{
         return $users;
     }
 
-
     public function deleteUser(){
         //Call global conn
         global $conn;
@@ -209,12 +208,14 @@ class User{
         return ($result->num_rows > 0) ? true : false;
     }
 
-    public static function verifyRegistration($firstName, $lastName, $username, $password){
+
+
+    public static function isUsernameTaken($username){
         //Call global $conn
         global $conn;
 
         //Create sql statement to verify if user exists
-        $sql = "SELECT * from `users` WHERE firstName='$firstName' AND lastName='$lastName' AND username='$username' AND password='$password'";
+        $sql = "SELECT * FROM `users` WHERE username='$username'";
 
         //Run sql statement
         $result = $conn->query($sql);
@@ -227,6 +228,31 @@ class User{
         }
     }
 
+    public static function getUserByUsername($username){
+        //Call global $conn
+        global $conn;
 
+        //Create sql statement to get user by username
+        $sql = "SELECT * FROM `users` WHERE username='$username'";
+
+        //Run sql statement
+        $result = $conn->query($sql);
+
+        //if error...
+        if(!$result){
+            die("Error: " . $conn->error);
+        }
+
+        //Create empty array to hold the user
+        $user = array();
+
+        //Populate array with fetched data
+        while($row = $result->fetch_assoc()){
+            $user[] = $row;
+        }
+
+        //Return the array
+        return $user;
+    }
 
 }
