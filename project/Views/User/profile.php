@@ -37,7 +37,7 @@
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #1b9bff;
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -45,8 +45,8 @@
             cursor: pointer;
         }
 
-        button .delete{
-            background-color: #4caf50;
+        button.delete{
+            background-color: #ff0000;
         }
     </style>
 </head>
