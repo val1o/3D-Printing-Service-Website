@@ -1,6 +1,6 @@
 <?php
 //Include the connection file
-include_once "connection.php";
+include_once "CoreModel.php";
 
 //Create user class
 class User{

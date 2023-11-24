@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles/styles.css">
+    
+    <!-- If $css is set, apply the corresponding stylesheet -->
+    <?php
+      if(isset($css)) {
+        echo '<link rel="stylesheet" href="Styles/' . $css . '.css">';
+      }
+    ?>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="Javascript/home.js"></script> -->
+    
+    <!-- If $js is set, apply the corresponding script -->
+    <?php
+      if(isset($js)) {
+        echo '<script src="Javascript/' . $js . '.js"></script>';
+      }
+    ?>
 
-    <title>Document</title>
+    <?php
+      if(isset($title)) {
+        echo "<title>" . $title . "</title>";
+      } else {
+        echo "<title>Document</title>";
+      }
+    ?>
+    
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="

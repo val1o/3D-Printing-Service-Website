@@ -1,15 +1,10 @@
 <?php
     //Include ressources
-    include_once 'connection.php';
+    include_once 'CoreModel.php';
+    include_once 'CoreController.php';
     include_once 'Models/User.php';
 
-    class UserController {
-
-        public function render($viewGroup, $view, $data = []) {
-            extract($data);
-
-            include "Views/$viewGroup/$view.php";
-        }
+    class UserController extends CoreController{
 
         public function route() {
 

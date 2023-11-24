@@ -1,4 +1,4 @@
-<?php $this->render("User", "../header"); ?>
+<?php $this->render("Shared", "header"); ?>
 
 <style>
     body {
@@ -80,4 +80,4 @@
         <?php }?>
     </div>
 
-<?php $this->render("../footer"); ?>
+<?php $this->render("Shared", "footer"); ?>
