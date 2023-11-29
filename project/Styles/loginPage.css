@@ -2,14 +2,21 @@ body {
     background-color: #f2f2f2;
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Set to column to stack elements vertically */
     align-items: center;
-    height: 100vh;
+}
+
+.nav-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .login-container {
     width: 300px;
-    margin: 0 auto;
+    margin: 20px auto; /* Add margin to the top for separation */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
