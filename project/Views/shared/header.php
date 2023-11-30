@@ -10,6 +10,7 @@
         echo '<link rel="stylesheet" href="Styles/' . $css . '.css">';
       }
     ?>
+    <link rel="stylesheet" href="Styles/header.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,12 +38,17 @@
 </head>
 
 <body>
-  <div id="overlay">
-    <img id="overlayImage" src="Images/3dprint_welcome.svg" alt="Overlay Image" />
-    <div id="textOverlay">Welcome</div>
-  </div>
+      <?php
+        if(!isset($_SESSION["uID"]) & $title == "Home Page") {
+          echo '
+            <div id="overlay">
+            <img id="overlayImage" src="Images/3dprint_welcome.svg" alt="Overlay Image" />
+            <div id="textOverlay">Welcome</div>
+            </div>
+            ';
+        } ?>
 
-  <div id="content" class="hidden revealContent">
+  <div id="content" class="<?php if(!isset($_SESSION["uID"])) echo 'hidden '; ?>revealContent">
     <nav>
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
@@ -50,12 +56,12 @@
       </label>
       <label class="logo">3D Printing Montreal</label>
       <ul>
-        <li><a class="active" href="#">Home</a></li>
+        <li><a <?php if($title == "Home Page") echo 'class="active" '; ?>href="index.php?c=Home&a=home">Home</a></li>
         <li><a href="#">Service</a></li>
         <li><a href="#">Templates</a></li>
-        <li><a href="index.php?c=User&a=profile">Profile</a></li>
-        <li><a href="index.php?c=User&a=register">Register</a></li>
-        <li><a href="index.php?c=User&a=login">Login</a></li>
-        <li><a href="index.php?c=User&a=logout">Logout</a></li>
+        <li><a <?php if($title == "Profile Page") echo 'class="active" '; ?>href="index.php?c=User&a=profile">Profile</a></li>
+        <li><a <?php if($title == "Register Page") echo 'class="active" '; ?>href="index.php?c=User&a=register">Register</a></li>
+        <li><a <?php if($title == "Login Page") echo 'class="active" '; ?>href="index.php?c=User&a=login">Login</a></li>
+        <li><a <?php if($title == "Logout Page") echo 'class="active" '; ?>href="index.php?c=User&a=logout">Logout</a></li>
       </ul>
     </nav>

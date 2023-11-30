@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Styles/loginPage.css"/>
-    
-</head>
-<body>
-    <div class="nav-bar">
-        
-
-    </div>
-
+<?php $this->render("Shared", "header", ["css" => "loginPage", "title" => "Login Page"]); ?>
 
     <div class="login-container">
             <?php if(!isset($user)) {?>
@@ -32,8 +18,4 @@
         </div>    
 
 
-</body>
-</html>
-
-
-
+        <?php $this->render("Shared", "footer"); ?>

@@ -1,56 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: Montserrat, sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #1b9bff;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button.delete{
-            background-color: #ff0000;
-        }
-    </style>
-</head>
-<body>
+<?php $this->render("Shared", "header", ["title" => "Profile Page"]); ?>
 
 <div class="container">
     <h2>Profile Page</h2>
@@ -92,5 +40,4 @@
         <?php } ?>
 </div>
 
-</body>
-</html>
+<?php $this->render("Shared", "footer"); ?>
