@@ -1,9 +1,7 @@
 <?php $this->render("Shared", "header", ["css" => "register", "title" => "Register Page"]); ?>
 
 <div class="container">
-    <div class="heading">
     <h2>Register</h2>    
-    </div>
 
     <form method="POST" action="index.php?c=User&a=register">
 
