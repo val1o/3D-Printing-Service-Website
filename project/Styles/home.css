@@ -116,17 +116,7 @@
     display: none;
   }
   
-  @media (max-width: 952px) {
-    .revealContent label.logo {
-      font-size: 30px;
-      padding-left: 50px;
-    }
-    .revealContent nav ul li a {
-      font-size: 16px;
-    }
-  }
-  
-  @media (max-width: 858px) {
+  @media (max-width: 1148px) {
     .revealContent .checkbtn {
       display: block;
     }

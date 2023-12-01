@@ -1,4 +1,4 @@
-<?php $this->render("Shared", "header", ["title" => "Profile Page"]); ?>
+<?php $this->render("Shared", "header", ["css" => "profile", "title" => "Profile Page"]); ?>
 
 <div class="container">
     <h2>Profile Page</h2>
