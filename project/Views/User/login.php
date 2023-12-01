@@ -1,5 +1,6 @@
 <?php $this->render("Shared", "header", ["css" => "loginPage", "title" => "Login Page"]); ?>
 
+<div class="page-container">
     <div class="login-container">
             <?php if(!isset($user)) {?>
             <form action="index.php?c=User&a=login" method="POST">
@@ -16,6 +17,6 @@
                 <?= "<p>You are already logged in " . $user['username'] . " living at " . $user['address'] . ".</p>" ?>
             <?php }?>
         </div>    
-
+    </div>
 
         <?php $this->render("Shared", "footer"); ?>
