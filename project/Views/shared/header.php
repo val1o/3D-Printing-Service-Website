@@ -58,9 +58,20 @@
       <ul>
         <li><a <?php if($title == "Home Page") echo 'class="active" '; ?>href="index.php?c=Home&a=home">Home</a></li>
         <li><a href="#">Service</a></li>
-        <li><a <?php if($title == "Profile Page") echo 'class="active" '; ?>href="index.php?c=User&a=profile">Profile</a></li>
-        <li><a <?php if($title == "Register Page") echo 'class="active" '; ?>href="index.php?c=User&a=register">Register</a></li>
-        <li><a <?php if($title == "Login Page") echo 'class="active" '; ?>href="index.php?c=User&a=login">Login</a></li>
-        <li><a <?php if($title == "Logout Page") echo 'class="active" '; ?>href="index.php?c=User&a=logout">Logout</a></li>
+
+        <?php if(isset($_SESSION['uID'])){
+          echo '<li><a' . ($title == "Profile Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=profile">Profile</a></li>';
+          echo '<li><a' . ($title == "Logout Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=logout">Logout</a></li>';
+        }
+          
+        ?>
+
+        <?php if(!isset($_SESSION['uID'])){
+          echo '<li><a' . ($title == "Login Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=login">Login</a></li>';
+          echo '<li><a' . ($title == "Register Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=register">Register</a></li>';
+        }
+        
+          
+        ?>
       </ul>
     </nav>
