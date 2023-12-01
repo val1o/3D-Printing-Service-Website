@@ -1,11 +1,16 @@
 .login-container {
     width: 300px;
+    height: 100vh;
     margin: 20px auto; /* Add margin to the top for separation */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 h2 {
