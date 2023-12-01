@@ -63,8 +63,6 @@ class User{
 
         //Create the sql statement to retrieve all users
         $sql = "SELECT * FROM `users`";
-
-        //TODO: prepare query first
         
         //Run sql statement
         $result = $conn->query($sql);

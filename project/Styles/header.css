@@ -4,17 +4,15 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-}
-  
-body{
+  }
+  body{
     font-family: montserrat;
-}
-
-nav{
-    background: #344966;
+  }
+  nav{
+    background: #0082e6;
     height: 80px;
     width: 100%;
-}
+  }
   label.logo{
     color: white;
     font-size: 35px;
@@ -57,7 +55,7 @@ nav{
   @media (max-width: 952px){
     label.logo{
       font-size: 30px;
-      padding-left: 50px;
+      padding-left: 0px;
     }
     nav ul li a{
       font-size: 16px;
