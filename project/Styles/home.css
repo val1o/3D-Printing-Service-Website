@@ -8,21 +8,9 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
-
-.home-section {
-    flex-grow: 1;
-    background: url('Views/Home/your-image.jpg') center/cover no-repeat; /* Set image as background */
-    text-align: center;
 }
 
-  .home-section img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
-  }
-
-  .text-over-image {
+.text-over-image {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -54,140 +42,77 @@
     display: none;
 }
 
-  .revealContent {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-  }
-  
-  .revealContent nav {
-    background: #344966;
-    height: 80px;
-    width: 100%;
-  }
-  
-  .revealContent label.logo {
-    color: white;
-    font-size: 35px;
-    line-height: 80px;
-    padding: 0 100px;
-    font-weight: bold;
-    font-family: Montserrat, sans-serif;
-  }
-  
-  .revealContent nav ul {
-    float: right;
-    margin-right: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  
-  .revealContent nav ul li {
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-  }
-  
-  .revealContent nav ul li a {
-    color: white;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: Montserrat, sans-serif;
-    text-decoration: none;
-  }
-  
-  .revealContent a.active,
-  .revealContent a:hover {
-    background: #1b9bff;
-    transition: 0.5s;
-  }
-  
-  .revealContent .checkbtn {
-    font-size: 30px;
-    color: white;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-  }
-  
-  @media (max-width: 1148px) {
-    .revealContent .checkbtn {
-      display: block;
-    }
-    .revealContent ul {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #2c3e50;
-      top: 80px;
-      left: -100%;
-      text-align: center;
-      transition: all 0.5s;
-    }
-    .revealContent nav ul li {
-      display: block;
-      margin: 50px 0;
-      line-height: 30px;
-    }
-    .revealContent nav ul li a {
-      font-size: 20px;
-    }
-    .revealContent a:hover,
-    .revealContent a.active {
-      background: none;
-      color: #0082e6;
-    }
-    #check:checked ~ ul {
-      left: 0;
-    }
-  }
-
-  .login-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-form {
+.home-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-input[type="text"],
-input[type="password"] {
+.home-section .template {
+  width: 90vh;
+  height: 300px;
+  margin-top: 50px;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 30px;
+  background-color: #e5e5f7;
+  opacity: 1;
+  background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #344966, #344966 50%, #e5e5f7 50%);
+  background-size: 10px 10px;
+}
+
+.home-section .template .image-container {
+  width: 40%;
+  margin: auto 5%;
+}
+
+.home-section .template .image-container img {
   width: 100%;
-  height: 30px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
 }
 
-input[type="submit"] {
+.home-section .template .image-container .tags{
+  display: flex;
+  justify-content: center;
+}
+
+.home-section .template .image-container .tag{
+  text-decoration: underline;
+  color: blue;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.home-section .template .text-container {
+  width: 40%;
+  margin: 10px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-section .template .text-container p{
+  margin: 10px 0;
+  padding: 5px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.home-section .template .text-container label{
+  margin-bottom: 30px;
+  padding: 5px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.home-section .template .text-container input{
   background-color: #344966;
   color: #fff;
   border: none;
-  padding: 10px 0;
-  border-radius: 4px;
+  padding: 10px;
+  border-radius: 12px;
   cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-p {
-  color: red;
-  margin: 10px 0;
-  font-weight: bold;
 }
