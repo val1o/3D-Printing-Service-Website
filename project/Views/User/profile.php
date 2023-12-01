@@ -35,6 +35,12 @@
 
             </form>
 
+            <form action="index.php?c=User&a=viewAllUsers" method="POST">
+                <br>
+                <button type="submit" name="viewAllUsers" class="manage">Manage Users</button>
+
+            </form>
+
         <?php } else { ?>
             <p>Please Login before accessing your profile.</p>
         <?php } ?>

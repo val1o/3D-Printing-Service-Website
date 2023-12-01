@@ -34,6 +34,10 @@ button.delete{
     background-color: #ff0000;
 }
 
+button.manage{
+    background-color: #159e57;
+}
+
 p {
     text-align: center;
 }
