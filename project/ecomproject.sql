@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2023 at 06:07 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 01, 2023 at 06:06 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecomproject`
+-- Database: `3dprintmtl`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +52,7 @@ INSERT INTO `comments` (`commentID`, `timeOfCreation`, `header`, `body`, `user_i
 CREATE TABLE `prints` (
   `printID` int(255) NOT NULL,
   `completionProgress` int(3) NOT NULL,
-  `timeOfCreation` datetime NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_id` int(255) DEFAULT NULL,
   `template_id` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,9 +61,9 @@ CREATE TABLE `prints` (
 -- Dumping data for table `prints`
 --
 
-INSERT INTO `prints` (`printID`, `completionProgress`, `timeOfCreation`, `user_id`, `template_id`) VALUES
-(1, 100, '2023-11-06 19:11:15', 1, 2),
-(2, 50, '2023-11-06 19:11:15', 2, 3);
+INSERT INTO `prints` (`printID`, `completionProgress`, `timestamp`, `user_id`, `template_id`) VALUES
+(1, 100, '2023-12-01 05:05:50', 1, 1),
+(2, 50, '2023-12-01 05:05:50', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE `refunds` (
 --
 
 INSERT INTO `refunds` (`refundID`, `reason`, `timeIssued`, `print_id`, `user_id`) VALUES
-(1, 'no moners', '2023-11-06 19:15:20', 2, 2);
+(1, 'no moners', '2023-11-06 19:15:20', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE `shipments` (
 --
 
 INSERT INTO `shipments` (`shipmentID`, `completionProgress`, `timeOfCreation`, `print_id`, `user_id`) VALUES
-(1, 100, '2023-11-06 19:12:21', 1, 1);
+(1, 100, '2023-11-06 19:12:21', NULL, 1);
 
 -- --------------------------------------------------------
 
