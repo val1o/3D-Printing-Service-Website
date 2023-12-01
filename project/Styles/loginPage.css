@@ -1,17 +1,6 @@
-
-.page-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-}
-
-
 .login-container {
-    width: 300px;
-    margin: 20px auto; /* Add margin to the top for separation */
+    width: 500px;
+    margin: 50px auto; /* Add margin to the top for separation */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
