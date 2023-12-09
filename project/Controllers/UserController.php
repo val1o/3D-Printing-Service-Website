@@ -176,7 +176,7 @@
             }
         }
 
-        private function deleteProfile() {
+        private function deleteProfile() { 
             //Check if delete is set
             if(isset($_POST['delete'])){
                         
