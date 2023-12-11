@@ -35,7 +35,7 @@
                 $template_id = $_POST['template_id'];
 
                 $comment = new Comment();
-                $comment = $comment->createComment();
+                $comment = $comment->createComment($timeOfCreation, $header, $body, $user_id, $template_id);
 
                 if($comment){
                     echo "Comment created successfully.";

@@ -78,7 +78,7 @@ class Template{
 
         $sql = "SELECT * FROM `templates` WHERE templateID=?";
 
-        $stmt = $conn->prepare();
+        $stmt = $conn->prepare($sql);
 
         $stmt->bind_param("i", $templateID);
 
@@ -93,16 +93,12 @@ class Template{
         global $conn;
 
         $sql = "SELECT * FROM `templates` WHERE user_id=?";
+        
+        $result = $conn->query($sql);
 
-        $stmt = $conn->prepare();
+        return $result->fetch_assoc();
 
-        $stmt->bind_param("i", $user_id);
-
-        if($stmt->execute()){
-            echo "Deletion successful";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
+        
     }
 
     public static function displayAllTemplates(){
