@@ -83,12 +83,33 @@ class Template{
         $stmt->bind_param("i", $templateID);
 
         if($stmt->execute()){
-            echo "Deletion successful";
+            echo "Fetching successful";
         } else {
             echo "Error: " . $stmt->error;
         }
     }
 
+    //TODO: fix
+    public static function getTemplateTags($templateID){
+        global $conn;
+
+        $sql = "SELECT `theme` FROM `templates` WHERE templateID=?";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bind_param("i", $templateID);
+        
+        $stmt = $conn->query($sql);
+
+        $tags = array();
+
+        while($row = $stmt->fetch_assoc()){
+            $tags[] = $row;
+        }
+
+        return $tags;
+    }
+    
     public static function displayMyTemplates($user_id){
         global $conn;
 
