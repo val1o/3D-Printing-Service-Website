@@ -15,7 +15,7 @@ class Comment{
 
         $this->commentID = $commentID;
 
-        if($commentID > 0){
+        if($commentID < 0){
             $this->timeOfCreation = "";
             $this->header = "";
             $this->body = "";

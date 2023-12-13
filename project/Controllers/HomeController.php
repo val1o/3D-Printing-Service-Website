@@ -3,6 +3,7 @@
     include_once 'CoreModel.php';
     include_once 'CoreController.php';
     include_once 'Models/User.php';
+    include_once 'Models/Template.php';
 
     class HomeController extends CoreController{
 
@@ -17,7 +18,12 @@
             $action = (isset($_GET['action'])) ? $_GET['action'] : "home";
 		    $id = (isset($_GET['id'])) ? intval($_GET['id']) : -1;
 
-            $this->render("Home", "home");
+            //Getting and populating all templates
+            $templates = new Template();
+            $templates = $templates->displayAllTemplates();
+            
+            //Render with templates
+            $this->render("Home", "home", ['templates' => $templates]);
         }
     }
 ?>

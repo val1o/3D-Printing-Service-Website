@@ -6,8 +6,15 @@
     }
 ?>
 
-
     <div class="home-section">
+        <?php
+            foreach($templates as $template) {
+                var_dump($template);
+                echo "</br>";
+                echo "</br>";
+                echo "</br>";
+            }
+        ?>
         <div class="template">
             <div class="image-container">
                 <img src="Images/sonic.jpeg" alt="Template Here">

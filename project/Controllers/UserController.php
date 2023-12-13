@@ -3,6 +3,7 @@
     include_once 'CoreModel.php';
     include_once 'CoreController.php';
     include_once 'Models/User.php';
+    include_once 'Models/Template.php';
 
     class UserController extends CoreController{
 
@@ -72,7 +73,9 @@
                             $allUsers = $user->retrieveAllUsers();
                             $this->render("User", "viewAllUsers", $allUsers);
                         } else {
-                            $this->render("Home", "home");
+                            $templates = new Template();
+                            $templates = $templates->displayAllTemplates();
+                            $this->render("Home", "home", ['templates' => $templates]);
                         }
                     } else {
                         echo '<script language="javascript">';
@@ -185,7 +188,9 @@
                 $user->deleteUser($_SESSION['uID']);
                 
                 //Render home page after deletion
-                $this->render("Home", "home");
+                $templates = new Template();
+                $templates = $templates->displayAllTemplates();
+                $this->render("Home", "home", ['templates' => $templates]);
                 echo "User deleted successfully";
             } else {
                 echo "pls do not probe the website";
@@ -196,7 +201,9 @@
             //Destroy and unset session
             session_unset();
             session_destroy();
-            $this->render("Home", "home");
+            $templates = new Template();
+            $templates = $templates->displayAllTemplates();
+            $this->render("Home", "home", ['templates' => $templates]);
         }
     }
 ?>

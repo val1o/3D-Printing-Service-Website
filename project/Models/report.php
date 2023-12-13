@@ -15,7 +15,7 @@ class Report{
 
         $this->reportID = $reportID;
 
-        if($reportID > 0){
+        if($reportID < 0){
             $this->status = "";
             $this->header = "";
             $this->body = "";

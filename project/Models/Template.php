@@ -16,7 +16,7 @@ class Template{
 
         $this->templateID = $templateID;
 
-        if($templateID > 0){
+        if($templateID < 0){
             $this->file = "";
             $this->creationDate = "";
             $this->theme = "";
