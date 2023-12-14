@@ -112,7 +112,6 @@ class User{
         //Create sql statement to promote user to admin
         $sql = "UPDATE * FROM `users` SET isAdmin=?";
 
-        //Prepare statement
         $stmt = $conn->prepare($sql);
 
         //Bind parameters to sql stmt
