@@ -104,8 +104,6 @@ class Template{
         }
 
         return $tags;
-
-
     }
     
     public static function displayMyTemplates($user_id){

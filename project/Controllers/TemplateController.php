@@ -1,7 +1,7 @@
 <?php
     include_once 'CoreModel.php';
     include_once 'CoreController.php';
-    include_once 'Models/User.php';
+    include_once 'Models/Template.php';
 
     class TemplateController extends CoreController {
 
@@ -35,12 +35,12 @@
         }
 
             private function createTemplate(){
-                if( isset($_POST['file']) && isset($_POST['creationDate'])
+                if(isset($_POST['file'])
                  && isset($_POST['theme']) && isset($_POST['title'])
-                 && isset($_POST['description']) && isset($_POST['user_id'])){
+                 && isset($_POST['description'])){
 
                     $file = $_POST['file'];
-                    $creationDate = $_POST['creationDate'];
+                    $creationDate = date('Y-m-d H:i:s');
                     $theme = $_POST['theme'];
                     $title = $_POST['title'];
                     $description = $_POST['description'];

@@ -49,13 +49,15 @@
                 echo "<td>" . $user['password'] . "</td>";
                 $isAdmin = ($user['isAdmin']) ? "true" : "false";
                 echo "<td>" . $isAdmin . "</td>";
-                echo "<td><form action='index.php?c=User&a=deleteUserAsAdmin&uID='" . $user['uID'] . "method='post'>
+                echo "<td><form action='index.php?c=User&a=viewAllUsers' method='post'>
+                            <input type='hidden' name='userID' value='" . $user['uID'] . "'>
                             <button type='submit'>Delete</button>
                           </form></td>"; // Added form and button
                     echo "</tr>";
 
 
                 echo "<td><form action='delete_user.php' method='post'>
+                            <input type='hidden' name='userID' value='" . $user['uID'] . "'>
                             <button type='submit'>Promote</button>
                           </form></td>"; // Added form and button
                     echo "</tr>";
