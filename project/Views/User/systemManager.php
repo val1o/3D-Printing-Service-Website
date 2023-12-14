@@ -50,8 +50,11 @@
                 $isAdmin = ($user['isAdmin']) ? "true" : "false";
                 echo "<td>" . $isAdmin . "</td>";
                 echo "<td><button onclick=\"deleteUser(" . $user['uID'] . ")\">Delete</button></td>";
-                echo "<td><button onclick=\"promoteUser(" . $user['uID'] . ")\">Promote</button></td>";
-                echo "</tr>";
+                echo "<td><form action='delete_user.php' method='post'>
+                            <input type='hidden' name='userID' value='" . $user['uID'] . "'>
+                            <button type='submit'>Delete</button>
+                          </form></td>"; // Added form and button
+                    echo "</tr>";
             }
         ?>
     </table>
