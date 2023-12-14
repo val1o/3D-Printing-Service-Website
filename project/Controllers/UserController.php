@@ -10,6 +10,7 @@
         public function route() {
 
             $action = (isset($_GET['a'])) ? $_GET['a'] : "viewAllUsers";
+            $uID = (isset($_GET['uID'])) ? $_GET['uID'] : "uID";
             
             switch ($action) {
                 case "viewAllUsers":
@@ -50,7 +51,7 @@
 
                 case "deletedByAdmin":
                     //Call delete by admin method
-                    $this->deleteUserAsAdmin();
+                    $this->deleteUserAsAdmin($uID);
                     break;
             }
         }
