@@ -79,7 +79,7 @@
                     $templateID = $_POST['templateID'];
 
                     $template = new Template();
-                    $template = $template->displaySingle($templateID);
+                    $template = $template->getTemplate($templateID);
 
                     $this->render("Template", "myTemplates", ['template' => $template]);
                 } else {

@@ -73,7 +73,7 @@ class Template{
         }
     }
 
-    public static function displaySingle($templateID){
+    public static function getTemplate($templateID){
         global $conn;
 
         $sql = "SELECT * FROM `templates` WHERE templateID=?";
@@ -95,19 +95,17 @@ class Template{
 
         $sql = "SELECT `theme` FROM `templates` WHERE templateID=?";
 
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bind_param("i", $templateID);
-        
-        $stmt = $conn->query($sql);
+        $result = $conn->query($sql);
 
         $tags = array();
 
-        while($row = $stmt->fetch_assoc()){
-            $tags[] = $row;
+        while($row = $result->fetch_assoc()){
+            $tags[] = $row['tag'];
         }
 
         return $tags;
+
+
     }
     
     public static function displayMyTemplates($user_id){
