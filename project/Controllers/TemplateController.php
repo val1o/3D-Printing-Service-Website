@@ -25,7 +25,7 @@
                     break;
 
                 case "retrieveCommunityTemplate":
-                    $this->retrieveTemplate();
+                    $this->retrieveCommunityTemplate();
                     break;
 
                 case "retrieveMyTemplates":
