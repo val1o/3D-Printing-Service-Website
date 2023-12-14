@@ -15,7 +15,7 @@
                 case "viewAllUsers":
                     $user = new User();
                     $allUsers = $user->retrieveAllUsers();
-                    $this->render("User", "viewAllUsers", $allUsers);
+                    $this->render("User", "systemManager", $allUsers);
                     break;
                     
                 case "login":
@@ -196,6 +196,13 @@
                 echo "pls do not probe the website";
             }
         }
+
+        private function deleteUserAsAdmin(){
+            $user = new User();
+            $user->deleteUser($_POST['uID']);
+            $this->render("User", "systemManager");
+        }
+
 
         private function logout() {
             //Destroy and unset session

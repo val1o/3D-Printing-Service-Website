@@ -31,7 +31,7 @@
                 $timeOfCreation = date('Y-m-d H:i:s');
                 $header = $_POST['header'];
                 $body = $_POST['body'];
-                $user_id = $SESSION['uID'];
+                $user_id = $_SESSION['uID'];
                 $template_id = $_POST['template_id'];
 
                 $comment = new Comment();
