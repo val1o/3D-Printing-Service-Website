@@ -76,7 +76,7 @@
                         $templates = new Template();
                         $templates = $templates->displayAllTemplates();
                         $this->render("Home", "home", ['templates' => $templates]);
-                        
+
                     } else {
                         echo '<script language="javascript">';
                         echo 'alert("Please enter a valid username and password.")';
@@ -197,7 +197,7 @@
             }
         }
 
-        private function deleteUserAsAdmin(){
+        private function deleteUserAsAdmin($uID){
             $user = new User();
             $user->deleteUser($_POST['uID']);
             $this->render("User", "systemManager");
