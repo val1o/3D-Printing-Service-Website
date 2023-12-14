@@ -73,16 +73,10 @@
                         //Assign user and check if admin
                         $user = $user->getUserByUsername($username);
                         $_SESSION['uID'] = $user['uID'];
-
-                        if($user['isAdmin']) {
-                            $user = new User();
-                            $allUsers = $user->retrieveAllUsers();
-                            $this->render("User", "viewAllUsers", $allUsers);
-                        } else {
-                            $templates = new Template();
-                            $templates = $templates->displayAllTemplates();
-                            $this->render("Home", "home", ['templates' => $templates]);
-                        }
+                        $templates = new Template();
+                        $templates = $templates->displayAllTemplates();
+                        $this->render("Home", "home", ['templates' => $templates]);
+                        
                     } else {
                         echo '<script language="javascript">';
                         echo 'alert("Please enter a valid username and password.")';

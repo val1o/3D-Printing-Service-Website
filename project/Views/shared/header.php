@@ -59,18 +59,22 @@
         <li><a <?php if($title == "Home Page") echo 'class="active" '; ?>href="index.php?c=Home&a=home">Home</a></li>
         <li><a href="#">Service</a></li>
 
-        <?php if(isset($_SESSION['uID'])){
+        <?php
+        if(isset($_SESSION['uID'])){
+          //If user is logged in, navbar shows Profile and Logout
           echo '<li><a' . ($title == "Profile Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=profile">Profile</a></li>';
           echo '<li><a' . ($title == "Logout Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=logout">Logout</a></li>';
-        }
-          
-        ?>
-
-        <?php if(!isset($_SESSION['uID'])){
+          $user = new User();
+          $user = $user->getUserByuID($_SESSION['uID']);
+          if($user['isAdmin']) {
+            //If user is admin, navbar shows Management
+            echo '<li><a' . ($title == "Management" ? ' class="active"' : '') . ' href="index.php?c=User&a=viewAllUsers">Manage</a></li>';
+          }
+        } else {
+          //If user is NOT logged in, navbar shows Login and Register
           echo '<li><a' . ($title == "Login Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=login">Login</a></li>';
           echo '<li><a' . ($title == "Register Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=register">Register</a></li>';
         }
-        
           
         ?>
       </ul>
