@@ -36,7 +36,7 @@ class Template{
             $this->theme = $data['theme'];
             $this->title = $data['title'];
             $this->description = $data['description'];
-            $this->$user_id = $data['user_id'];
+            $this->user_id = $data['user_id'];
         }
     }
 
@@ -62,7 +62,7 @@ class Template{
 
         $sql = "DELETE FROM `templates` WHERE templateID=?";
 
-        $stmt = $conn->prepare();
+        $stmt = $conn->prepare($sql);
 
         $stmt->bind_param("i", $templateID);
 

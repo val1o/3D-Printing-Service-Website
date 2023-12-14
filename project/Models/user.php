@@ -30,7 +30,7 @@ class User{
             $this->telephoneNumber = "";
             $this->address = "";
             $this->postalCode = "";
-            $this->userName = "";
+            $this->username = "";
             $this->password = "";
             $this->isAdmin = "";
         } else {
@@ -111,6 +111,9 @@ class User{
 
         //Create sql statement to promote user to admin
         $sql = "UPDATE * FROM `users` SET isAdmin=?";
+
+        //Prepare statement
+        $stmt = $conn->prepare($sql);
 
         //Bind parameters to sql stmt
         $stmt->bind_param("i", $this->isAdmin);
