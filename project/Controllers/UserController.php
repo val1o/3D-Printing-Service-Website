@@ -46,6 +46,12 @@
                 case "logout":
                     //Call logout method
                     $this->logout();
+                    break;
+
+                case "deletedByAdmin":
+                    //Call delete by admin method
+                    $this->deleteUserAsAdmin();
+                    break;
             }
         }
 
