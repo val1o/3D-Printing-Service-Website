@@ -49,8 +49,7 @@
                 echo "<td>" . $user['password'] . "</td>";
                 $isAdmin = ($user['isAdmin']) ? "true" : "false";
                 echo "<td>" . $isAdmin . "</td>";
-                echo "<td><form action='index.php?c=User&a=viewAllUsers' method='post'>
-                            <input type='hidden' name='userID' value='" . $user['uID'] . "'>
+                echo "<td><form action='index.php?c=User&a=deleteUserAsAdmin&uID='" . $user['uID'] . "method='post'>
                             <button type='submit'>Delete</button>
                           </form></td>"; // Added form and button
                     echo "</tr>";
@@ -106,18 +105,7 @@
         function promoteUser(userID) {
             alert("Promoting user with ID:" + userID);
         }
-
-
-
-
-
     </script>
-
-
-
-
-
-
 
 </body>
 </html>

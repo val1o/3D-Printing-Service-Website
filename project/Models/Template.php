@@ -89,7 +89,6 @@ class Template{
         }
     }
 
-    //TODO: fix
     public static function getTemplateTags($templateID){
         global $conn;
 

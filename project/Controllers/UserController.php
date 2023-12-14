@@ -49,9 +49,9 @@
                     $this->logout();
                     break;
 
-                case "deletedByAdmin":
+                case "deleteUserAsAdmin":
                     //Call delete by admin method
-                    $this->deleteUserAsAdmin($uID);
+                    $this->deleteUserAsAdmin();
                     break;
             }
         }
@@ -198,12 +198,16 @@
             }
         }
 
-        private function deleteUserAsAdmin($uID){
+        private function deleteUserAsAdmin(){
             $user = new User();
-            $user->deleteUser($_POST['uID']);
+            $uID = $_GET['uID'];
+            $user = $user->getUserByuID($uID);
+            echo "<PRE>";
+            var_dump($user);
+            echo "</PRE>";
+            // $user->deleteUser($uID);
             $this->render("User", "systemManager");
         }
-
 
         private function logout() {
             //Destroy and unset session
