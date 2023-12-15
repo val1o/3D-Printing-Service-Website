@@ -40,10 +40,17 @@
                 case "sendToCheckout":
                     $this->sendToCheckout();
                     break;
+
+                case "addToOrders":
+                    $this->addTemplateToOrder();
+                    break;
             }
         }
 
-        
+        private function addTemplateToOrder(){
+            
+            $this->render("User", "orders");
+        }
 
         private function createTemplate(){
             if(isset($_POST['file'])
@@ -100,7 +107,7 @@
 
         private function sendToCheckout(){
 
-            if(isset($_POST['template_ID'])){
+            if(isset($_POST['templateID'])){
 
                 $templateID = $_POST['templateID'];
 
@@ -112,7 +119,7 @@
                 $this->render("Template", "printService");
             }
 
-            
+
 
 
         }

@@ -8,9 +8,6 @@
 
 <body>
     <?php
-    echo "<PRE>";
-    var_dump($data);
-    echo "</PRE>";
 
     if (isset($template)) {
         // Step 3: Display the fetched details in HTML
