@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2023 at 06:06 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Dec 15, 2023 at 02:42 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -132,26 +132,41 @@ INSERT INTO `shipments` (`shipmentID`, `completionProgress`, `timeOfCreation`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `tagID` int(255) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `template_id` int(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `templates`
 --
 
 CREATE TABLE `templates` (
   `templateID` int(255) NOT NULL,
   `file` tinytext NOT NULL,
-  `creationDate` datetime NOT NULL,
-  `theme` enum('stringTag','stringTag','stringTag','stringTag','stringTag') NOT NULL,
+  `creationDate` datetime DEFAULT NULL,
+  `theme` enum('Fanatasy','Industrial','Educational','Hobby','Other') NOT NULL,
   `title` varchar(50) NOT NULL,
-  `user_id` int(255) DEFAULT NULL
+  `user_id` int(255) DEFAULT NULL,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `templates`
 --
 
-INSERT INTO `templates` (`templateID`, `file`, `creationDate`, `theme`, `title`, `user_id`) VALUES
-(1, 'ImagineAFile Here', '2023-11-06 19:09:31', 'stringTag', 'LegoStarWars', 1),
-(2, 'ASecondFile', '2023-11-06 19:10:25', 'stringTag', 'Tree', 2),
-(3, '#rdFile', '2023-11-06 19:10:25', 'stringTag', 'gym', 3);
+INSERT INTO `templates` (`templateID`, `file`, `creationDate`, `theme`, `title`, `user_id`, `description`) VALUES
+(1, 'https://images.unsplash.com/photo-1533450718592-29d45635f0a9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9', '2023-11-06 19:09:31', '', 'LegoStarWars', 1, 'This is the description for the first file.'),
+(2, 'https://images3.alphacoders.com/165/thumb-1920-165265.jpg', '2023-11-06 19:10:25', '', 'Tree', 2, 'This is the description for the second file.'),
+(3, 'https://wallpapercave.com/wp/wp2568544.jpg', '2023-11-06 19:10:25', '', 'gym', 3, 'This is the description for the third file.'),
+(4, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.uhdpaper.com%2Fwallpaper%2Fstray-kids-maniac-felix-109%401%40g-pc-4k.jpg&f=1&nofb=1&ipt=1b297219f1b5c80a4d19402daf883d9fa60e25256812c957bd1447e0d42e7b11&ipo=images', NULL, '', 'Felix', NULL, 'Statue of Felix'),
+(5, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.allkpop.com%2Fupload%2F2022%2F12%2Fcontent%2F131144%2F1670949858-untitled-1.jpg&f=1&nofb=1&ipt=41008e29bd972b630541a88e0c324eca7a0cfbdfa8db40670e66427d612d69da&ipo=images', NULL, '', 'Statue of HAN', NULL, 'SKZ AAA 2023 LESSS GOOOOOOOO');
 
 -- --------------------------------------------------------
 
@@ -176,7 +191,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uID`, `firstName`, `lastName`, `telephoneNumber`, `address`, `postalCode`, `username`, `password`, `isAdmin`) VALUES
-(1, 'valentin', 'atanasov', '438-630-2425', '394 51e Ave. Lachine', 'H8T2W5', 'valio', 'sum123', 0),
+(1, 'valentin', 'atanasov', '438-630-2425', '394 51e Ave. Lachine', 'H8T2W5', 'valio', 'sum123', 1),
 (2, 'daniel', 'levitin', '514-123-4567', '123 funny street', 'H1H2H3', 'daniel', 'sum345', 0),
 (3, 'sebastian', 'parachievescu', '263-234-5432', 'the woods', 'H7H8H9', 'waccy', 'chad', 0),
 (4, 'Sani', 'Atanasov', '222-222-2222', '27348273ss', 'H8H6H7', 'sani', 'ata', 0);
@@ -226,6 +241,13 @@ ALTER TABLE `shipments`
   ADD KEY `associatedWithPrintFromShipment` (`print_id`);
 
 --
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`tagID`),
+  ADD KEY `associatedWithTemplateFromTag` (`template_id`);
+
+--
 -- Indexes for table `templates`
 --
 ALTER TABLE `templates`
@@ -273,10 +295,16 @@ ALTER TABLE `shipments`
   MODIFY `shipmentID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `tagID` int(255) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `templateID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `templateID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -322,6 +350,12 @@ ALTER TABLE `reports`
 ALTER TABLE `shipments`
   ADD CONSTRAINT `associatedWithPrintFromShipment` FOREIGN KEY (`print_id`) REFERENCES `prints` (`printID`) ON DELETE SET NULL ON UPDATE NO ACTION,
   ADD CONSTRAINT `associatedWithUserFromShipment` FOREIGN KEY (`user_id`) REFERENCES `users` (`uID`) ON DELETE SET NULL ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tags`
+--
+ALTER TABLE `tags`
+  ADD CONSTRAINT `associatedWithTemplateFromTag` FOREIGN KEY (`template_id`) REFERENCES `templates` (`templateID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `templates`
