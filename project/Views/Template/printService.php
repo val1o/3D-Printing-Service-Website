@@ -1,8 +1,7 @@
 <?php $this->render("Shared", "header", ['css' => 'printService', "title" => "Print Service Page"]); ?>
 
 <?php if (isset($template)) { ?>
-        <!-- Step 3: Display the fetched details in HTML -->
-        <div class="print-service-section">    
+        <div class="print-service-section">
             <div class="template">
                 <div class="image-container">
                     <img src="<?php echo $template['file'];?>" alt="Template Image">
@@ -20,17 +19,24 @@
                 </div>
             </div>
             <div class="comments">
+                <div class="add">
+                    <p>>> Add Comment! <<</p>
+                </div>
                 <?php
                     if(!empty($comments)) {
                         //If there are comments under the template
                         foreach ($comments as $comment):
-                            $author = $author->getUserByuID($comment['user_id']);
+                            $author = $user->getUserByuID($comment['user_id']);
                 ?>
                             <div class="comment">
-                                <p class="author">Comment Author: <?= $author['username'] ?></p>
-                                <p class="date-created">Comment Written On: <?= $comment['timeOfCreation'] ?></p>
-                                <p class="header">Comment Header: <?= $comment['header'] ?></p>
-                                <p class="body">Comment Body: <?= $comment['body'] ?></p>
+                                <div class="about">
+                                    <p class="author"><?= $author['username'] ?> | </p>
+                                    <p class="date-created"><?= $comment['timeOfCreation'] ?></p>
+                                </div>
+                                <div class="content">
+                                    <p class="header"><?= $comment['header'] ?></p>
+                                    <p class="body"><?= $comment['body'] ?></p>
+                                </div>
                             </div>
                 <?php
                         endforeach;

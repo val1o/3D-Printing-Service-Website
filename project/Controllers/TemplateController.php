@@ -146,9 +146,9 @@
                     $comment = new Comment();
                     $comments = $comment->getAllCommentsForATemplate($templateID);
 
-                    $author = new User();
-                    
-                    $this->render("Template", "printService", ['template' => $template, 'comments' => $comments, 'author' => $author]);
+                    $user = new User();
+
+                    $this->render("Template", "printService", ['template' => $template, 'comments' => $comments, 'user' => $user]);
         } else {
                 $this->render("Home", "home");
         }
