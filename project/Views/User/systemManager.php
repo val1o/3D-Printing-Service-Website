@@ -35,33 +35,54 @@
             <th>Promote</th>
         </tr>
         <?php
-            //Populating the table with data
-            $allUsers = $data;
-            foreach($allUsers as $user){
-                echo "<tr>";
-                echo "<td>" . $user['uID'] . "</td>";
-                echo "<td>" . $user['firstName'] . "</td>";
-                echo "<td>" . $user['lastName'] . "</td>";
-                echo "<td>" . $user['telephoneNumber'] . "</td>";
-                echo "<td>" . $user['address'] . "</td>";
-                echo "<td>" . $user['postalCode'] . "</td>";
-                echo "<td>" . $user['username'] . "</td>";
-                echo "<td>" . $user['password'] . "</td>";
-                $isAdmin = ($user['isAdmin']) ? "true" : "false";
-                echo "<td>" . $isAdmin . "</td>";
-                echo "<td><form action='index.php?c=User&a=deleteUserAsAdmin&uID='" . $user['uID'] . "method='post'>
-                            <button type='submit'>Delete</button>
-                          </form></td>"; // Added form and button
-                    echo "</tr>";
+        //Populating the table with data
+        $allUsers = $data;
+        foreach ($allUsers as $user) {
+            echo "<tr>";
+            echo "<td>" . $user['uID'] . "</td>";
+            echo "<td>" . $user['firstName'] . "</td>";
+            echo "<td>" . $user['lastName'] . "</td>";
+            echo "<td>" . $user['telephoneNumber'] . "</td>";
+            echo "<td>" . $user['address'] . "</td>";
+            echo "<td>" . $user['postalCode'] . "</td>";
+            echo "<td>" . $user['username'] . "</td>";
+            echo "<td>" . $user['password'] . "</td>";
+            $isAdmin = ($user['isAdmin']) ? "true" : "false";
+            echo "<td>" . $isAdmin . "</td>";
 
+            echo "<td>";
+            echo "<form onsubmit='return confirmDelete()' action='index.php?c=User&a=deleteUserAsAdmin&uID=" . $user['uID'] . "' method='post'>";
+            echo "<button type='submit'>Delete</button>";
+            echo "</form>";
+            echo "</td>";
 
-                echo "<td><form action='delete_user.php' method='post'>
-                            <input type='hidden' name='userID' value='" . $user['uID'] . "'>
-                            <button type='submit'>Promote</button>
-                          </form></td>"; // Added form and button
-                    echo "</tr>";
+            echo "<td>";
+            if ($user['isAdmin'] != 1) {
+                echo "<form onsubmit='return confirmPromote()'  action='index.php?c=User&a=promoteUser&uID=" . $user['uID'] . "' method='post'>";
+                echo "<input type='hidden' name='userID' value='" . $user['uID'] . "'>";
+                echo "<button type='submit'>Promote</button>";
+                echo "</form>";
+            } else {
+                // User is already promoted, so don't show the "Promote" button
+                echo "";
             }
+            echo "</td>";
+
+            echo "</tr>";
+        }
         ?>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this user?");
+        }
+
+        function confirmPromote(){
+            return confirm("Are you sure you want to promote this user to admin?");
+        }
+
+    </script>
+
     </table>
     </div>
 

@@ -29,6 +29,10 @@
                     $this->register();
                     break;
 
+                case "promoteUser":
+                    $this->promoteUserToAdmin();
+                    break;
+
                 case "profile":
                     //Call profile method
                     $this->profile();
@@ -200,13 +204,18 @@
 
         private function deleteUserAsAdmin(){
             $user = new User();
+
             $uID = $_GET['uID'];
-            $user = $user->getUserByuID($uID);
-            echo "<PRE>";
-            var_dump($user);
-            echo "</PRE>";
-            // $user->deleteUser($uID);
-            $this->render("User", "systemManager");
+
+            $user->deleteUser($uID);
+        }
+
+        private function promoteUserToAdmin(){
+            $user = new User();
+
+            $uID = $_GET['uID'];
+
+            $user->promoteUser($uID);
         }
 
         private function logout() {

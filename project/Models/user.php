@@ -105,23 +105,18 @@ class User{
         }
     }
 
-    public function promoteUser(){
+    public function promoteUser($uID){
         //Call global conn
         global $conn;
 
         //Create sql statement to promote user to admin
-        $sql = "UPDATE * FROM `users` SET isAdmin=?";
-
-        $stmt = $conn->prepare($sql);
-
-        //Bind parameters to sql stmt
-        $stmt->bind_param("i", $this->isAdmin);
+        $sql = "UPDATE `users` SET isAdmin=1 WHERE uID=$uID";
 
         //Execute stmt
-        if($stmt->execute()){
+        if($conn->query($sql) === TRUE){
             return "User with ID: " . $this->uID . "successfully promoted.";
         } else {
-            return "Promotion error: " . $stmt->error;
+            return "Promotion error: " . $conn->error;
         }
     }
 

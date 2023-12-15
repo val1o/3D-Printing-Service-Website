@@ -1,3 +1,9 @@
+<!-- Throws error line 67 -->
+<!-- <?php
+//  $this->render("Shared", "header", ["title" => "Create Template Page"]);
+?> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +14,7 @@
 
 
 <body>
-    <form action="../../index.php?c=Template&a=createTemplate" method="post">
+    <form action="index.php?c=Template&a=createTemplate" method="post">
 
         <label for="file">File Name:</label>
         <input type="text" name="file"><br>

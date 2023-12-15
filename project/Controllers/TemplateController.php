@@ -111,10 +111,10 @@
 
                 $templateID = $_POST['templateID'];
 
-                $template = new Template();
-                $template = $template->getTemplate($templateID);
+                    $template = new Template();
+                    $template = $template->getTemplate($templateID);
 
-                $this->render("Template", "printService", ['template' => $template]);
+                    $this->render("Template", "printService", ['template' => $template]);
 
         } else {
                 $this->render("Home", "home");
