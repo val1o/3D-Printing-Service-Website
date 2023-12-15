@@ -62,7 +62,7 @@
                     $title, $description, $user_id);
 
              } else {
-                $this->render("Template", "createTemplate");
+                $this->render("Template", "createTemplate", ['message' => $_SESSION['uID']]);
              }
         }
 

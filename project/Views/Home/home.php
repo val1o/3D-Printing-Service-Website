@@ -7,7 +7,6 @@
 ?>
 
 <div class="home-section">
-    <?php if(isset($message)) echo $message; ?>
     <?php foreach ($templates as $template): ?>
         <div class="template">
             <div class="image-container">

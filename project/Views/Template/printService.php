@@ -8,8 +8,9 @@
 
 <body>
     <?php
-
-    var_dump($template);
+    echo "<PRE>";
+    var_dump($data);
+    echo "</PRE>";
 
     if (isset($template)) {
         // Step 3: Display the fetched details in HTML
@@ -22,7 +23,7 @@
                 <strong>Description:</strong> <?php echo $template['description']; ?>
             </div>
             <div>
-                <strong>Creator:</strong> <?php echo $template['creator']; ?>
+                <strong>Creator:</strong> <?php echo $template['user_id']; ?>
             </div>
             <!-- Add other details you want to display -->
         </div>

@@ -41,20 +41,24 @@ class Template{
     }
 
 
-    public static function createTemplate(){
-        global $conn;
+    // public static function createTemplate($file, $creationDate, $theme, $title, $description, $user_id){
+    //     global $conn;
 
-        $sql = "INSERT INTO `templates` (file, creationDate, theme, title, description, user_id) VALUES (?, ?, ?, ?, ?, ?)";
+    //     $sql = "INSERT INTO `templates` (file, creationDate, theme, title, description, user_id) VALUES (?, ?, ?, ?, ?, ?)";
 
-        $stmt = $conn->prepare($sql);
+    //     $stmt = $conn->prepare($sql);
 
-        $stmt->bind_param("sssssi", $_POST['file'], $_POST['creationDate'], $_POST['theme'], $_POST['title'], $_POST['description'], $_POST['user_id']);
+    //     $stmt->bind_param("sssssi", $file, $creationDate, $theme, $title, $description, $user_id);
 
-        if($stmt->execute()){
-            echo "Addition successful";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
+    //     if($stmt->execute()){
+    //         echo "Addition successful";
+    //     } else {
+    //         echo "Error: " . $stmt->error;
+    //     }
+    // }
+
+    public static function createTemplate($file, $creationDate, $theme, $title, $description, $user_id){
+        echo "File: $file </br> Creation Date: $creationDate </br> Theme: $theme </br> Title: $title </br> Description: $description </br> UID: $user_id";
     }
 
     public static function deleteTemplate($templateID){
@@ -76,17 +80,11 @@ class Template{
     public static function getTemplate($templateID){
         global $conn;
 
-        $sql = "SELECT * FROM `templates` WHERE templateID=?";
+        $sql = "SELECT * FROM `templates` WHERE templateID=$templateID";
 
-        $stmt = $conn->prepare($sql);
+        $result = $conn->query($sql);
 
-        $stmt->bind_param("i", $templateID);
-
-        if($stmt->execute()){
-            echo "Fetching successful</br>";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
+        return $result->fetch_assoc();
     }
 
     public static function getTemplateTags($templateID){
