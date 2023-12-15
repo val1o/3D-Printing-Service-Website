@@ -37,7 +37,7 @@
                 $status = $_POST['status'];
                 $header = $_POST['header'];
                 $body = $_POST['body'];
-                $user_id = $SESSION['uID'];
+                $user_id = $_SESSION['uID'];
                 $comment_id = $_POST['comment_id'];
 
                 $report = new Report();

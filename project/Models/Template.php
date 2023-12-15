@@ -83,7 +83,7 @@ class Template{
         $stmt->bind_param("i", $templateID);
 
         if($stmt->execute()){
-            echo "Fetching successful";
+            echo "Fetching successful</br>";
         } else {
             echo "Error: " . $stmt->error;
         }
