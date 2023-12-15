@@ -36,8 +36,14 @@
                 case "printService":
                     $this->renderPrintService();
                     break;
+
+                case "sendToCheckout":
+                    $this->sendToCheckout();
+                    break;
             }
         }
+
+        
 
         private function createTemplate(){
             if(isset($_POST['file'])
@@ -62,7 +68,7 @@
                     $title, $description, $user_id);
 
              } else {
-                $this->render("Template", "createTemplate", ['message' => $_SESSION['uID']]);
+                $this->render("Template", "createTemplate");
              }
         }
 
@@ -90,6 +96,25 @@
             } else {
                 $this->render("Template", "myTemplates");
             }
+        }
+
+        private function sendToCheckout(){
+
+            if(isset($_POST['template_ID'])){
+
+                $templateID = $_POST['templateID'];
+
+                $template = new Template();
+                $template = $template->getTemplate($templateID);
+
+                $this->render("User", "checkout", ['template' => $template]);
+            } else {
+                $this->render("Template", "printService");
+            }
+
+            
+
+
         }
 
         private function retrieveMyTemplates(){

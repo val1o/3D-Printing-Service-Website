@@ -11,6 +11,11 @@
 
 
 <body>
+<?php
+    echo "<PRE>";
+    var_dump($data);
+    echo "</PRE>";
+?>
     <div class="BillingInfo">
         <h2>1. Billing Info</h2>
         <form method="" action="">

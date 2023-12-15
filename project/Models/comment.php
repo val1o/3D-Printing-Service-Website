@@ -33,7 +33,7 @@ class Comment{
             $this->header = $data['header'];
             $this->body = $data['body'];
             $this->template_id = $data['template_id'];
-            $this->$user_id = $data['user_id'];
+            $this->user_id = $data['user_id'];
         }
     }
 
@@ -58,7 +58,7 @@ class Comment{
 
         $sql = "DELETE FROM `comments` WHERE commentID=?";
 
-        $stmt = $conn->prepare();
+        $stmt = $conn->prepare($sql);
 
         $stmt->bind_param("i", $commentID);
 
@@ -67,6 +67,22 @@ class Comment{
         } else {
             echo "Error: " . $stmt->error;
         }
+    }
+
+    public static function getAllCommentsForATemplate($template_id){
+        global $conn;
+
+        $sql = "SELECT * FROM `comments` WHERE template_id=$template_id";
+
+        $result  =$conn->query($sql);
+
+        $comments = array();
+
+        while($row = $result->fetch_assoc()){
+            $comments[] = $row;
+        }
+
+        return $comments;
     }
 
 

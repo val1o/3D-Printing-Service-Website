@@ -27,6 +27,12 @@
             </div>
             <!-- Add other details you want to display -->
         </div>
+        
+        <form action="index.php?c=Template&a=sendToCheckout" method="post">
+        <input type="hidden" name="templateID" value="<?= $template['templateID']; ?>">
+                    <input type="submit" value="Confirm Purchase">
+        </form>
+
         <?php
     } else {
         // Handle the case when template details are not available

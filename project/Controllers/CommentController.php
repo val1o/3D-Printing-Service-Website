@@ -18,10 +18,23 @@
                     $this->deleteComment();
                     break;
 
+                case "viewAllCommentsForPost":
+                    $this->viewAllCommentsForPost();
+                    break;
+
                 case "default":
                     $this->render("Templates", "printService");
                     break;
             }
+        }
+
+        private function viewAllCommentsForPost(){
+            //Temporary
+            $template_id = $_SESSION['template_id'];
+
+            $comment = new Comment();
+            $allComments = $comment->getAllCommentsForATemplate($template_id);
+            $this->render("Template", "printService", $allComments);
         }
 
         private function createComment(){

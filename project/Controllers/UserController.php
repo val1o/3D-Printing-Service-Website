@@ -208,6 +208,7 @@
             $uID = $_GET['uID'];
 
             $user->deleteUser($uID);
+            $this->render("User", "systemManager");
         }
 
         private function promoteUserToAdmin(){
@@ -216,6 +217,7 @@
             $uID = $_GET['uID'];
 
             $user->promoteUser($uID);
+            $this->render("User", "systemManager");
         }
 
         private function logout() {
