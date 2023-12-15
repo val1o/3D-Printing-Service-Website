@@ -60,11 +60,6 @@
                     $template = $template->createTemplate($file, $creationDate, $theme,
                         $title, $description, $user_id);
 
-                    if($template){
-                        echo "Creation successful.";
-                    } else {
-                        echo "Creation failed.";
-                    }
                  } else {
                     $this->render("Template", "createTemplate");
                  }
@@ -117,7 +112,7 @@
 
                     $template = new Template();
                     $template = $template->getTemplate($templateID);
-                    
+
                     $this->render("Template", "printService", ['template' => $template]);
 
             } else {
