@@ -14,9 +14,10 @@
             </div>
 
             <div class="text-container">
-                <p class="title"><?php echo "Title: " . $template['title']; ?></p>
-                <p class="description"><?php echo $template['description']; ?></p>
-                <label class="creator"><?php echo 'Creator ID: ' . $template['user_id']; ?></label>
+                <p class="title"><?= "Title: " . $template['title']; ?></p>
+                <p class="description"><?= $template['description']; ?></p>
+                <label class="creator"><?= 'Creator ID: ' . $template['user_id']; ?></label>
+                
                 <form action="index.php?c=Template&a=printService" method="POST">
                     <input type="hidden" name="templateID" value="<?= $template['templateID']; ?>">
                     <input type="submit" value="View">
@@ -27,5 +28,3 @@
 </div>
 
 <?php $this->render("Shared", "footer"); ?>
-
-

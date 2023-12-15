@@ -69,10 +69,10 @@ class Comment{
         }
     }
 
-    public static function getAllCommentsForATemplate($template_id){
+    public static function getAllCommentsForATemplate($templateID) {
         global $conn;
 
-        $sql = "SELECT * FROM `comments` WHERE template_id=$template_id";
+        $sql = "SELECT * FROM `comments` WHERE template_id=$templateID";
 
         $result  =$conn->query($sql);
 
@@ -84,6 +84,4 @@ class Comment{
 
         return $comments;
     }
-
-
 }

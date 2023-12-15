@@ -3,6 +3,7 @@
     include_once 'CoreController.php';
     include_once 'Models/Template.php';
     include_once 'Models/User.php';
+    include_once 'Models/Comment.php';
 
     class TemplateController extends CoreController {
 
@@ -118,10 +119,6 @@
             } else {
                 $this->render("Template", "printService");
             }
-
-
-
-
         }
 
         private function retrieveMyTemplates(){
@@ -146,15 +143,16 @@
                     $template = new Template();
                     $template = $template->getTemplate($templateID);
 
-                    $this->render("Template", "printService", ['template' => $template]);
+                    $comment = new Comment();
+                    $comments = $comment->getAllCommentsForATemplate($templateID);
 
+                    $author = new User();
+                    
+                    $this->render("Template", "printService", ['template' => $template, 'comments' => $comments, 'author' => $author]);
         } else {
                 $this->render("Home", "home");
         }
-
     }
-
-
 }
 
 
