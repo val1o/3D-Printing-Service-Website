@@ -57,11 +57,11 @@
       <label class="logo">3D Printing Montreal</label>
       <ul>
         <li><a <?php if($title == "Home Page") echo 'class="active" '; ?>href="index.php?c=Home&a=home">Home</a></li>
-        <li><a href="#">Service</a></li>
 
         <?php
         if(isset($_SESSION['uID'])){
           //If user is logged in, navbar shows Profile and Logout
+          echo '<li><a' . ($title == "Create Template Page" ? ' class="active"' : '') . ' href="index.php?c=Template&a=createTemplate">Create Template</a></li>';
           echo '<li><a' . ($title == "Profile Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=profile">Profile</a></li>';
           echo '<li><a' . ($title == "Logout Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=logout">Logout</a></li>';
           $user = new User();
