@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2023 at 02:42 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 15, 2023 at 10:54 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `commentID` int(11) NOT NULL,
-  `timeOfCreation` datetime NOT NULL,
+  `timeOfCreation` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `header` varchar(50) NOT NULL,
   `body` text NOT NULL,
   `user_id` int(255) DEFAULT NULL,
@@ -41,7 +41,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`commentID`, `timeOfCreation`, `header`, `body`, `user_id`, `template_id`) VALUES
-(1, '2023-11-06 19:12:49', 'Like it!', 'Really nice', 1, 2);
+(1, '2023-11-07 00:12:49', 'Like it!', 'Really nice', 1, 2),
+(2, '2023-12-15 13:04:42', 'Scenery', 'very nice photo, reminds me of touching grass', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -166,7 +167,8 @@ INSERT INTO `templates` (`templateID`, `file`, `creationDate`, `theme`, `title`,
 (2, 'https://images3.alphacoders.com/165/thumb-1920-165265.jpg', '2023-11-06 19:10:25', '', 'Tree', 2, 'This is the description for the second file.'),
 (3, 'https://wallpapercave.com/wp/wp2568544.jpg', '2023-11-06 19:10:25', '', 'gym', 3, 'This is the description for the third file.'),
 (4, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.uhdpaper.com%2Fwallpaper%2Fstray-kids-maniac-felix-109%401%40g-pc-4k.jpg&f=1&nofb=1&ipt=1b297219f1b5c80a4d19402daf883d9fa60e25256812c957bd1447e0d42e7b11&ipo=images', NULL, '', 'Felix', NULL, 'Statue of Felix'),
-(5, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.allkpop.com%2Fupload%2F2022%2F12%2Fcontent%2F131144%2F1670949858-untitled-1.jpg&f=1&nofb=1&ipt=41008e29bd972b630541a88e0c324eca7a0cfbdfa8db40670e66427d612d69da&ipo=images', NULL, '', 'Statue of HAN', NULL, 'SKZ AAA 2023 LESSS GOOOOOOOO');
+(5, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.allkpop.com%2Fupload%2F2022%2F12%2Fcontent%2F131144%2F1670949858-untitled-1.jpg&f=1&nofb=1&ipt=41008e29bd972b630541a88e0c324eca7a0cfbdfa8db40670e66427d612d69da&ipo=images', NULL, '', 'Statue of HAN', NULL, 'SKZ AAA 2023 LESSS GOOOOOOOO'),
+(6, 'watch', NULL, '', 'My wathc, yayayaya', NULL, 'i bought this watch a while ago');
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prints`
@@ -304,7 +306,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `templates`
 --
 ALTER TABLE `templates`
-  MODIFY `templateID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `templateID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

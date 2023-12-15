@@ -17,7 +17,7 @@
                 <p class="title"><?= "Title: " . $template['title']; ?></p>
                 <p class="description"><?= $template['description']; ?></p>
                 <label class="creator"><?= 'Creator ID: ' . $template['user_id']; ?></label>
-                
+
                 <form action="index.php?c=Template&a=printService" method="POST">
                     <input type="hidden" name="templateID" value="<?= $template['templateID']; ?>">
                     <input type="submit" value="View">
