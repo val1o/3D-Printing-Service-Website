@@ -31,6 +31,10 @@
                 case "retrieveMyTemplates":
                     $this->retrieveMyTemplates();
                     break;
+
+                case "printService":
+                    $this->renderPrintService();
+                    break;
             }
         }
 
@@ -40,10 +44,15 @@
                  && isset($_POST['description'])){
 
                     $file = $_POST['file'];
+
+                    date_default_timezone_get();
                     $creationDate = date('Y-m-d H:i:s');
+
                     $theme = $_POST['theme'];
                     $title = $_POST['title'];
                     $description = $_POST['description'];
+
+                    //ToDO: fix as session is null
                     $user_id = $_SESSION['uID'];
 
                     $template = new Template();
@@ -98,14 +107,27 @@
 
                     $this->render("Template", "myTemplates", ['template' => $template]);
                 }
+            }
 
+            private function renderPrintService(){
 
+                if(isset($_POST['templateID'])){
+
+                    $templateID = $_POST['templateID'];
+
+                    $template = new Template();
+                    $template = $template->getTemplate($templateID);
+                    
+                    $this->render("Template", "printService", ['template' => $template]);
+
+            } else {
+                    $this->render("Home", "home");
             }
 
         }
 
 
-
+    }
 
 
 
