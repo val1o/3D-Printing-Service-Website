@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2023 at 10:54 PM
+-- Generation Time: Dec 16, 2023 at 05:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,16 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`commentID`, `timeOfCreation`, `header`, `body`, `user_id`, `template_id`) VALUES
 (1, '2023-11-07 00:12:49', 'Like it!', 'Really nice', 1, 2),
-(2, '2023-12-15 13:04:42', 'Scenery', 'very nice photo, reminds me of touching grass', 2, 2);
+(2, '2023-12-15 13:04:42', 'Scenery', 'very nice photo, reminds me of touching grass', 2, 2),
+(3, '2023-12-15 22:53:47', 'wowow', 'zooweemama!!', 2, NULL),
+(4, '2023-12-15 22:58:05', 'cat', 'there\'s a hidden cat at the top!!', 2, 2),
+(5, '2023-12-15 23:04:44', '', '', 2, 2),
+(6, '2023-12-16 02:19:59', 'i love art', 'this is a masterpiece i must say', 2, 2),
+(7, '2023-12-16 02:23:44', 'mystery', 'i wonder what the time is', 2, 2),
+(13, '2023-12-16 02:35:15', 'what a creature', 'i just love these animals', 2, 1),
+(14, '2023-12-16 02:37:10', 'testing add', 'hopefully now it fully works', 2, 1),
+(40, '2023-12-16 04:51:07', 'fboeufbuoef', 'fbiewufbouewbfuoe', 2, 1),
+(41, '2023-12-16 04:51:31', 'bfeiufeb', 'fbewiufebwui', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -270,7 +279,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `prints`

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-
-<body>
+<?php $this->render("Shared", "header", ["title" => "System Manager"]); ?>
 
     <label for="tableSelector">Select Table:</label>
     <select id="tableSelector" onchange="changeTable()">
@@ -128,5 +119,4 @@
         }
     </script>
 
-</body>
-</html>
+<?php $this->render("Shared", "footer"); ?>

@@ -60,8 +60,9 @@
 
         <?php
         if(isset($_SESSION['uID'])){
-          //If user is logged in, navbar shows Profile and Logout
+          //If user is logged in, navbar shows Create Template, Orders, Profile and Logout
           echo '<li><a' . ($title == "Create Template Page" ? ' class="active"' : '') . ' href="index.php?c=Template&a=createTemplate">Create Template</a></li>';
+          echo '<li><a' . ($title == "Orders Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=orders">Orders</a></li>';
           echo '<li><a' . ($title == "Profile Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=profile">Profile</a></li>';
           echo '<li><a' . ($title == "Logout Page" ? ' class="active"' : '') . ' href="index.php?c=User&a=logout">Logout</a></li>';
           $user = new User();

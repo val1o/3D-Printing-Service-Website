@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<?php $this->render("Shared", "header", ["title" => "Orders Page"]); ?>
 
+<div class="orders">
+    Still in development
+</div>
 
-
-<body>
-    <h2>Hi</h2>
-
-
-
-
-</body>
-</html>
+<?php $this->render("Shared", "footer"); ?>

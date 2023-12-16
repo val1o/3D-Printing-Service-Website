@@ -38,6 +38,11 @@
                     $this->profile();
                     break;
 
+                case "orders":
+                    //Call orders method
+                    $this->orders();
+                    break;
+
                 case "updateProfile":
                     //Call updateProfile method
                     $this->updateProfile();
@@ -152,6 +157,25 @@
 
             } else {
                 $this->render("User", "profile");
+            }
+        }
+
+        private function orders() {
+            //Check if session is set
+            if(isset($_SESSION['uID'])) {
+                        
+                //Assign info to variables
+                $uID = $_SESSION['uID'];
+
+                //Creating and populating new user
+                $user = new User();
+                $user = $user->getUserByuID($uID);
+                
+                //Render with user data
+                $this->render("User", "orders", ['user' => $user]);
+
+            } else {
+                $this->render("Home", "home");
             }
         }
 

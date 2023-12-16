@@ -1,19 +1,5 @@
-<!-- Throws error line 67 -->
-<!-- <?php
-//  $this->render("Shared", "header", ["title" => "Create Template Page"]);
-?> -->
+<?php $this->render("Shared", "header", ["title" => "Create Template Page"]); ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-
-<body>
     <form action="index.php?c=Template&a=createTemplate" method="post">
 
         <label for="file">File Name:</label>
@@ -32,9 +18,4 @@
 
     </form>
 
-
-
-
-    
-</body>
-</html>
+<?php $this->render("Shared", "footer"); ?>
