@@ -2,6 +2,8 @@
     include_once 'CoreModel.php';
     include_once 'CoreController.php';
     include_once 'Models/User.php';
+    include_once 'Models/Comment.php';
+    include_once 'Models/Template.php';
 
     class CommentController extends CoreController {
 
@@ -38,25 +40,32 @@
         }
 
         private function createComment(){
-            if (isset($_POST['header']) && isset($_POST['body']) &&
-                isset($_POST['user_id']) && isset($_POST['template_id'])){
+            if (!empty($_POST['header']) && !empty($_POST['body']) &&
+                !empty($_POST['user_id']) && !empty($_POST['templateID'])){
 
-                $timeOfCreation = date('Y-m-d H:i:s');
                 $header = $_POST['header'];
                 $body = $_POST['body'];
                 $user_id = $_SESSION['uID'];
-                $template_id = $_POST['template_id'];
+                $template_id = $_POST['templateID'];
 
                 $comment = new Comment();
-                $comment = $comment->createComment($timeOfCreation, $header, $body, $user_id, $template_id);
+                $comment->createComment($header, $body, $user_id, $template_id);
 
-                if($comment){
-                    echo "Comment created successfully.";
-                } else {
-                    echo "Creation error.";
-                }
+                //Sending back the template that needs to be loaded
+                $template = new Template();
+                $template = $template->getTemplate($template_id);
+
+                //Also sending back the comments that need to be loaded
+                $comments = new Comment();
+                $comments = $comments->getAllCommentsForATemplate($template_id);
+
+                //Also send an empty User for the printService view to use
+                $user = new User();
+
+                $this->render("Template", "printService", ['template' => $template, 'comments' => $comments, 'user' => $user]);
+
             } else {
-                $this->render("Template", "printService");
+                $this->render("Template", "printService", ['error' => 'Please enter all of the information']);
             }
         }
 

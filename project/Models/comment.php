@@ -40,11 +40,11 @@ class Comment{
     public static function createComment(){
         global $conn;
 
-        $sql = "INSERT INTO `comments` (timeOfCreation, header, body, template_id, user_id) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `comments` (header, body, template_id, user_id) VALUES (?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bind_param("sssii", $_POST['timeOfCreation'], $_POST['header'], $_POST['body'], $_POST['template_id'], $_POST['user_id']);
+        $stmt->bind_param("ssii", $_POST['header'], $_POST['body'], $_POST['templateID'], $_POST['user_id']);
 
         if($stmt->execute()){
             echo "Addition successful";

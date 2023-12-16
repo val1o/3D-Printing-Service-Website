@@ -2,6 +2,9 @@
 
 <?php if (isset($template)) { ?>
         <div class="print-service-section">
+            <!-- If an error message was sent through render, display it -->
+            <?php if(isset($error)) echo $error;?>
+
             <div class="template">
                 <div class="image-container">
                     <img src="<?php echo $template['file'];?>" alt="Template Image">
@@ -20,7 +23,13 @@
             </div>
             <div class="comments">
                 <div class="add">
-                    <p>>> Add Comment! <<</p>
+                    <form action="index.php?c=Comment&a=createComment" method="post">
+                        <input type="hidden" name="templateID" value="<?= $template['templateID']; ?>">
+                        <input type="hidden" name="user_id" value="<?= $_SESSION['uID']; ?>">
+                        <input type="text" name="header" placeholder="Header" required>
+                        <input type="text" name="body" placeholder="Body" required>
+                        <input type="submit" value=">> Add Comment! <<">
+                    </form>
                 </div>
                 <?php
                     if(!empty($comments)) {

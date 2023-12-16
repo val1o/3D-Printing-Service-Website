@@ -90,7 +90,7 @@ class Template{
     public static function getTemplateTags($templateID){
         global $conn;
 
-        $sql = "SELECT `theme` FROM `templates` WHERE templateID=?";
+        $sql = "SELECT `theme` FROM `templates` WHERE templateID=$templateID";
 
         $result = $conn->query($sql);
 

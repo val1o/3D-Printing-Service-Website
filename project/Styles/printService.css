@@ -93,18 +93,17 @@
   }
 
 .add {
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
     line-height: 30px;
     text-align: center;
     border-bottom: 2px dashed grey;
     border-radius: 3px;
 }
 
-.add > p {
-    display: inline-block;
-}
-
-.add > p:hover {
+.add > input:hover {
     text-decoration: underline;
     cursor: pointer;
 }
