@@ -103,7 +103,7 @@
     border-radius: 3px;
 }
 
-.add > input:hover {
+.add > input:hover,  .delete:hover{
     text-decoration: underline;
     cursor: pointer;
 }
@@ -119,11 +119,22 @@
 
 .about {
     margin: 0px 0px 10px 20px;
+}
+
+.author, .date-created {
+    display: inline-block;
     border-bottom: 1px solid lightgrey;
 }
 
-.about, .author, .date-created {
-    display: inline-block;
+.about > form {
+    display: inline;
+}
+
+.report, .delete {
+    border-radius: 5px;
+    margin-left: 10px;
+    border-color: red;
+    background-color: salmon;
 }
 
 .header {

@@ -62,11 +62,7 @@ class Comment{
 
         $stmt->bind_param("i", $commentID);
 
-        if($stmt->execute()){
-            echo "Deletion successful";
-        } else {
-            echo "Error: " . $stmt->error;
-        }
+        $stmt->execute();
     }
 
     public static function getAllCommentsForATemplate($templateID) {

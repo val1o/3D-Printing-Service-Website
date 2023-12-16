@@ -41,6 +41,25 @@
                                 <div class="about">
                                     <p class="author"><?= $author['username'] ?> | </p>
                                     <p class="date-created"><?= $comment['timeOfCreation'] ?></p>
+                                    <?php
+                                        //Is the following comment uploaded by you
+                                        if($_SESSION['uID'] == $comment['user_id']) { ?>
+                                            <!-- If so, Delete button should appear -->
+                                                <form action="index.php?c=Comment&a=deleteComment" method="post">
+                                                    <input type="hidden" name="templateID" value="<?= $template['templateID']; ?>">
+                                                    <input type="hidden" name="user_id" value="<?= $_SESSION['uID']; ?>">
+                                                    <input type="hidden" name="header" value="<?= $comment['header']; ?>">
+                                                    <input type="hidden" name="body" value="<?= $comment['body']; ?>">
+                                                    <input type="hidden" value="<?= $comment['commentID'] ?>" name="commentID">
+                                                    <input type="submit" value="Delete" name="delete" class="delete">
+                                                </form>
+                                    <?php
+                                        } else { ?>
+                                            <!-- Otherwise Report button should appear -->
+                                            <form action="index.php?c=Comment&a=reportComment" method="post">
+                                                <input type="submit" value="Report" name="report" class="report">
+                                            </form>
+                                    <?php } ?>
                                 </div>
                                 <div class="content">
                                     <p class="header"><?= $comment['header'] ?></p>

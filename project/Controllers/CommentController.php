@@ -75,7 +75,18 @@
                 $comment = new Comment();
                 $comment->deleteComment($_POST['commentID']);
 
-                $this->render("Template", "printService");
+                //Sending back the template that needs to be loaded
+                $template = new Template();
+                $template = $template->getTemplate($_POST['templateID']);
+
+                //Also sending back the comments that need to be loaded
+                $comments = new Comment();
+                $comments = $comments->getAllCommentsForATemplate($_POST['templateID']);
+
+                //Also send an empty User for the printService view to use
+                $user = new User();
+                
+                $this->render("Template", "printService", ['template' => $template, 'comments' => $comments, 'user' => $user]);
                 echo "Comment deleted";
             } else {
                 echo "pls do not probe the website";
